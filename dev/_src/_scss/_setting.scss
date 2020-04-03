@@ -1,0 +1,88 @@
+//- 형식은 background:url('#{$currentUrl}images/common/ko_bg_test01.jpg') no-repeat left center;
+// 전체 sass 경로 설정
+
+// **** 경로 종류 ****
+// 이미지 경로
+// 폰트 경로
+// 세팅 파일 경로 - mixin, setting
+
+// 참고용
+// $currentUrl_00: "/";
+// $currentUrl_0: "./";
+// $currentUrl_1: "../";
+// $currentUrl_2: "../../";
+// $currentUrl_3: "../../../";
+// $currentUrl_4: "../../../../";
+// $currentUrl_5: "../../../../../";
+
+// 이미지 소스 경로
+// $url_image_common_2: "../../images/common/";
+
+// 폰트 소스 경로
+// $url_font_notosanskr_1: "../fonts/notosanskr/";
+// $url_font_oswald_1: "../fonts/oswald/";
+// $url_font_roboto_1: "../fonts/roboto/";
+// $url_font_myriadpro_1: "../fonts/myriadpro/";
+
+// 2019.01.15 - css 이미지 경로는 변수 처리 하지 않습니다.
+// 2019.06.05 - css 폰트 스타일 아래와 같이 변수 처리 합니다. 변수명으로 폰트를 알 수 있게 동일한 이름으로 변수를 설정 합니다.
+
+$LGSmHaL: 'LGSmHaL';
+$LGSmHaR: 'LGSmHaR';
+$LGSmHaSB: 'LGSmHaSB';
+$LGSmHaB: 'LGSmHaB';
+
+$fontSize10: 10px;
+$fontSize11: 11px;
+$fontSize12: 12px;
+$fontSize13: 13px;
+$fontSize14: 14px;
+$fontSize15: 15px;
+$fontSize16: 16px;
+$fontSize17: 17px;
+$fontSize18: 18px;
+$fontSize19: 19px;
+$fontSize20: 20px;
+$fontSize21: 21px;
+$fontSize22: 22px;
+$fontSize23: 23px;
+$fontSize24: 24px;
+$fontSize25: 25px;
+$fontSize26: 26px;
+$fontSize27: 27px;
+$fontSize28: 28px;
+$fontSize29: 29px;
+$fontSize30: 30px;
+$fontSize31: 31px;
+$fontSize32: 32px;
+$fontSize33: 33px;
+$fontSize34: 34px;
+$fontSize35: 35px;
+$fontSize36: 36px;
+$fontSize37: 37px;
+$fontSize38: 38px;
+$fontSize39: 39px;
+$fontSize40: 40px;
+$fontSize41: 41px;
+$fontSize42: 42px;
+$fontSize43: 43px;
+$fontSize44: 44px;
+$fontSize45: 45px;
+$fontSize46: 46px;
+$fontSize47: 47px;
+$fontSize48: 48px;
+$fontSize49: 49px;
+$fontSize50: 50px;
+$fontSize51: 51px;
+$fontSize52: 52px;
+$fontSize53: 53px;
+$fontSize54: 54px;
+$fontSize55: 55px;
+$fontSize56: 56px;
+
+// 공통 소스 인클루드 영역
+// sass 에서 _를 넣지 않아도 컴파일을 한다.
+// visual studio code 에서 cmd + click 해서 파일로 이동할때 import 파일이름에 _를 넣으면 오류가 난다.
+@import 'mixin';
+@import '../../inc/css/sprite_mobile';
+@import '../../inc/css/sprite_pc';

@@ -1,0 +1,35 @@
+//- 폴더 공통 설정
+- var folder01 = 'html/main/'
+
+//- 코딩리스트 컨텐츠 영역
+//- table_contents 괄호 사이에 공백이 있을 경우 오류가 남. 항상 확인하기
+div.cl_list_area
+	div.cl_list_detail
+		h2.cl_category_tit 메인
+			span.page_count_category
+				//- | (
+				//- span.pcc_ing 1
+				//- | &nbsp;/
+				//- span.pcc_all 1
+				//- | &nbsp;)
+		table.cl_table
+			+table_thead
+			tbody
+				tr
+					+table_contents(
+						'메인', /* 뎁스 1 */
+						'', /* 뎁스 2 */
+						'', /* 뎁스 3 */
+						'', /* 뎁스 4 */
+						'', /* 뎁스 5 */
+						`${folder01}`, /* 폴더 */
+						'main.html', /* 페이지명 */
+						'html', /* 페이지 유형 */
+						'-', /* 완료일 */
+						'-', /* 진행상태 */
+						'', /* 진행률 */
+						'', /* 스크립트 유무 */
+						'' /* 스크립트 진행률 */
+						)
+					td.p_etc
+						div

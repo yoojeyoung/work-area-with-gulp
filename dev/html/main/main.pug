@@ -1,0 +1,39 @@
+extends ../../_src/_pug/_extend_html5
+
+//- layout 에서 선언한 공통적인 title 값이 맨뒤에 들어 감.
+block title
+	title #{metaTitle_main} #{title}
+	//- 뎁스별로 경로 바꿀때
+	- var url_css_0 = url_css_2;
+	- var url_js_0 = url_js_2;
+	- var url_img_common_0 = url_img_common_2;
+
+block keywords&description
+	meta(name="keywords" content=`${metaKeywords_main}`)
+	meta(name="description" content=`${metaDescription_main}`)
+
+block property
+	meta(property="og:title" content=`${ogTitle_main}`)
+	meta(property="og:url" content=`${ogUrl_main}`)
+	meta(property="og:image" content=`${ogImage_main}`)
+	meta(property="og:description" content=`${ogDescription_main}`)
+
+append css
+	link(href=`${url_css_0}category.css`, type='text/css', rel='stylesheet')
+//- 	style.
+//- 		html{font-size:24px;}
+//- 		.aaa div{font-size:1.8rem;}
+//- 		.bbb div{font-size:12px}
+//- 		.ccc div{font-size:1.2em}
+//- layout 에서 정의한 변수를 아래와 같이 페이지 별로 사용 가능.
+//- var bodyClass = 'index_page_body'
+//- var wrapClass = 'index_page_wrap'
+block vars
+	- var bodyClass = ''
+	- var wrapClass = ''
+
+block contents
+	#container
+
+		#content(role='main')
+			| 컨텐츠 시작

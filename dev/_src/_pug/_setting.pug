@@ -1,0 +1,61 @@
+//- currentUrl 은 공통적인 루트의 경로를 제어합니다.
+//- 변경은 이곳에서 currentUrl 의 경로만 수정해주면 전체 적용 됩니다.
+//- html, images 등의 경로는 이 곳에서만 관리 합니다. 다른 URL 이 필요한 경우 이 곳에 추가 해서 변수값을 적용 시켜 줍니다.
+//- sass URL은 sass 쪽에서 관리 합니다.
+//- 예) script(src=`${currentUrl}inc/js/jquery.js`, type='text/javascript', charset='utf-8')
+
+//- **** 경로 종류 ****
+//- 이미지 경로
+//- js 경로
+//- css 경로
+//- 폰트 경로
+//- extends 경로
+//- 세팅 파일 경로 - mixin, setting
+//- 공통 파일 경로 - header, footer 등
+
+//- 참고용
+- var currentUrl_00 = '/';
+- var currentUrl_0 = './';
+- var currentUrl_1 = '../';
+- var currentUrl_2 = '../../';
+- var currentUrl_3 = '../../../';
+- var currentUrl_4 = '../../../../';
+- var currentUrl_5 = '../../../../../';
+
+//- 절대 경로용
+- var url_js_00 = '/inc/js/';
+- var url_css_00 = '/inc/css/';
+- var url_img_common_00 = '/images/common/';
+
+//- 루트 폴더용
+- var url_js_0 = 'inc/js/';
+- var url_css_0 = 'inc/css/';
+- var url_img_common_0 = 'images/common/';
+
+//- 1뎁스 폴더용
+- var url_js_1 = '../inc/js/';
+- var url_css_1 = '../inc/css/';
+- var url_img_common_1 = '../images/common/';
+
+//- 2뎁스 폴더용
+- var url_js_2 = '../../inc/js/';
+- var url_css_2 = '../../inc/css/';
+- var url_img_common_2 = '../../images/common/';
+
+//- - var currentUrl = locals['currentUrl']
+
+
+//- browserupgrade
+mixin browserupgrade
+	//[if lte IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]
+
+
+//- dimm
+mixin dimm
+	.dimm
+		img(src=`${url_img_common_0}blank_size_100.png`, alt="")
+
+
+//- 공통 소스 인클루드 영역
+include _mixin
+include _seo

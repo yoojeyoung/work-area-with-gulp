@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+
+
+// 아래 사이즈외에 더 추가되는 사이즈가 있을 경우는 해당되는 범위 파일안에
+// 미디어 범위를 추가해서 스타일을 추가 해준다
+
+
+// contents - mobile
+ @media (max-width:1023px){
+	// sass 에서 _를 넣지 않아도 컴파일을 한다.
+	// visual studio code 에서 cmd + click 해서 파일로 이동할때 import 파일이름에 _를 넣으면 오류가 난다.
+	@import 'category_mobile';
+}
+
+// contents - tablet
+ @media (min-width:1024px) and (max-width:1280px){
+	// sass 에서 _를 넣지 않아도 컴파일을 한다.
+	// visual studio code 에서 cmd + click 해서 파일로 이동할때 import 파일이름에 _를 넣으면 오류가 난다.
+	@import 'category_tablet';
+}
+
+// contents - pc
+ @media (min-width:1281px){
+	// sass 에서 _를 넣지 않아도 컴파일을 한다.
+	// visual studio code 에서 cmd + click 해서 파일로 이동할때 import 파일이름에 _를 넣으면 오류가 난다.
+	@import 'category_pc';
+}
+

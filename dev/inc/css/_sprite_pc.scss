@@ -1,0 +1,156 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$pc-ico-download-dark-name: 'pc_ico_download_dark';
+$pc-ico-download-dark-x: 0px;
+$pc-ico-download-dark-y: 0px;
+$pc-ico-download-dark-offset-x: 0px;
+$pc-ico-download-dark-offset-y: 0px;
+$pc-ico-download-dark-width: 18px;
+$pc-ico-download-dark-height: 17px;
+$pc-ico-download-dark-total-width: 74px;
+$pc-ico-download-dark-total-height: 65px;
+$pc-ico-download-dark-image: '../../images/common/sprite_pc.png';
+$pc-ico-download-dark: (0px, 0px, 0px, 0px, 18px, 17px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_download_dark', );
+$pc-ico-paginav-first-name: 'pc_ico_paginav_first';
+$pc-ico-paginav-first-x: 28px;
+$pc-ico-paginav-first-y: 0px;
+$pc-ico-paginav-first-offset-x: -28px;
+$pc-ico-paginav-first-offset-y: 0px;
+$pc-ico-paginav-first-width: 14px;
+$pc-ico-paginav-first-height: 14px;
+$pc-ico-paginav-first-total-width: 74px;
+$pc-ico-paginav-first-total-height: 65px;
+$pc-ico-paginav-first-image: '../../images/common/sprite_pc.png';
+$pc-ico-paginav-first: (28px, 0px, -28px, 0px, 14px, 14px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_paginav_first', );
+$pc-ico-paginav-last-name: 'pc_ico_paginav_last';
+$pc-ico-paginav-last-x: 0px;
+$pc-ico-paginav-last-y: 27px;
+$pc-ico-paginav-last-offset-x: 0px;
+$pc-ico-paginav-last-offset-y: -27px;
+$pc-ico-paginav-last-width: 14px;
+$pc-ico-paginav-last-height: 14px;
+$pc-ico-paginav-last-total-width: 74px;
+$pc-ico-paginav-last-total-height: 65px;
+$pc-ico-paginav-last-image: '../../images/common/sprite_pc.png';
+$pc-ico-paginav-last: (0px, 27px, 0px, -27px, 14px, 14px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_paginav_last', );
+$pc-ico-paginav-next-name: 'pc_ico_paginav_next';
+$pc-ico-paginav-next-x: 24px;
+$pc-ico-paginav-next-y: 27px;
+$pc-ico-paginav-next-offset-x: -24px;
+$pc-ico-paginav-next-offset-y: -27px;
+$pc-ico-paginav-next-width: 8px;
+$pc-ico-paginav-next-height: 14px;
+$pc-ico-paginav-next-total-width: 74px;
+$pc-ico-paginav-next-total-height: 65px;
+$pc-ico-paginav-next-image: '../../images/common/sprite_pc.png';
+$pc-ico-paginav-next: (24px, 27px, -24px, -27px, 8px, 14px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_paginav_next', );
+$pc-ico-paginav-prev-name: 'pc_ico_paginav_prev';
+$pc-ico-paginav-prev-x: 0px;
+$pc-ico-paginav-prev-y: 51px;
+$pc-ico-paginav-prev-offset-x: 0px;
+$pc-ico-paginav-prev-offset-y: -51px;
+$pc-ico-paginav-prev-width: 8px;
+$pc-ico-paginav-prev-height: 14px;
+$pc-ico-paginav-prev-total-width: 74px;
+$pc-ico-paginav-prev-total-height: 65px;
+$pc-ico-paginav-prev-image: '../../images/common/sprite_pc.png';
+$pc-ico-paginav-prev: (0px, 51px, 0px, -51px, 8px, 14px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_paginav_prev', );
+$pc-ico-selectbox-down-name: 'pc_ico_selectbox_down';
+$pc-ico-selectbox-down-x: 52px;
+$pc-ico-selectbox-down-y: 0px;
+$pc-ico-selectbox-down-offset-x: -52px;
+$pc-ico-selectbox-down-offset-y: 0px;
+$pc-ico-selectbox-down-width: 22px;
+$pc-ico-selectbox-down-height: 6px;
+$pc-ico-selectbox-down-total-width: 74px;
+$pc-ico-selectbox-down-total-height: 65px;
+$pc-ico-selectbox-down-image: '../../images/common/sprite_pc.png';
+$pc-ico-selectbox-down: (52px, 0px, -52px, 0px, 22px, 6px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_selectbox_down', );
+$pc-ico-selectbox-up-name: 'pc_ico_selectbox_up';
+$pc-ico-selectbox-up-x: 52px;
+$pc-ico-selectbox-up-y: 16px;
+$pc-ico-selectbox-up-offset-x: -52px;
+$pc-ico-selectbox-up-offset-y: -16px;
+$pc-ico-selectbox-up-width: 22px;
+$pc-ico-selectbox-up-height: 6px;
+$pc-ico-selectbox-up-total-width: 74px;
+$pc-ico-selectbox-up-total-height: 65px;
+$pc-ico-selectbox-up-image: '../../images/common/sprite_pc.png';
+$pc-ico-selectbox-up: (52px, 16px, -52px, -16px, 22px, 6px, 74px, 65px, '../../images/common/sprite_pc.png', 'pc_ico_selectbox_up', );
+$spritesheet-width: 74px;
+$spritesheet-height: 65px;
+$spritesheet-image: '../../images/common/sprite_pc.png';
+$spritesheet-sprites: ($pc-ico-download-dark, $pc-ico-paginav-first, $pc-ico-paginav-last, $pc-ico-paginav-next, $pc-ico-paginav-prev, $pc-ico-selectbox-down, $pc-ico-selectbox-up, );
+$spritesheet: (74px, 65px, '../../images/common/sprite_pc.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

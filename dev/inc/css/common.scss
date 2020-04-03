@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+//- 정식 주석 쓸때 ! (느낌표) 넣어야 html 에 표시됩니다.
+//- 현재 이 주석의 표현식은 sass 에서만 나타나고 html 에서는 노출되지 않습니다.
+
+//- 익스플로러 브라우저 핵 사용시, IE7 브라우저는 클래스 ie7 상속해서 사용.
+//- 익스플로러 브라우저 핵 사용시, IE8 브라우저는 클래스 ie8 상속해서 사용.
+//- 익스플로러 브라우저 핵 사용시, IE9 브라우저는 클래스 ie9 상속해서 사용.
+//- 예) .ie7 .location{border:1px solid red}
+//- 예) .ie8 .location{border:1px solid red}
+//- 예) .ie9 .location{border:1px solid red}
+
+// 추가 인클루드는 _setting 안에다가 하기 여기 인클루드는 _setting 하나만 나와있게 관리하기
+@import '../../_src/_scss/_setting';
+
+// css sprite (sass) 사용 방식 아래 샘플 참고
+// @include sprite($sprite-end);
+// 예) background:url('#{$url_image_common}이미지이름') no-repeat lef top;
+
+// 스프라이트 이미지 include 사용 예제
+// PC 용 - @include sprite-custom($pc-ico-paginav-first);
+// Mobile 용 - @include retina-sprite-custom($mobile-ico-paginav-first-group);
+
+/*! common */
+// .clfix{*zoom:1}
+.clfix:after,.clfix:before{display:table;line-height:0;content:""}
+.clfix:after{clear:both;}
+
+//- 장재연님이 만드신 만능 숨김텍스트 클라스. 모바일도 버그없이 가능염.
+//- 메뉴나 링크 부분이 아닌 순수한 이미지에 대한 대체 텍스트 영역에만 사용할 것.
+.hide-txt{
+	// display:inline-block;
+	overflow:hidden;
+	position:absolute;
+	width:1px;height:1px;
+	font-size:1px;line-height:0;
+	// clip:rect(1px 1px 1px 1px);
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	margin: -1px;padding: 0;border: 0;
+}
+
+// a태그 이하 hide-txt 클래스는 모바일 디바이스 사이즈에서는 font-size:1px 을 font-size:0 으로 변경해야 초점 오류를 방지할 수 있다.
+// 모바일 분기 사이즈에 따라 아래 max-width 값은 변경될 수 있음.
+@media (max-width: 1024px) {
+	a .hide-txt{
+		font-size:0;
+	}
+}
+
+// 웹접근성용 추가 소스
+a{
+	&:before{
+		content: '　';position:absolute;font-size:0;
+	}
+}
+
+/*! skipnav */
+.skipnav{position:absolute;top:0;left:0;z-index:9999;width:100%;height:0;line-height:1}
+.skipnav a{display:block;overflow:hidden;width:1px;height:1px;margin:0 -1px -1px 0;padding:0;font-size:0;line-height:1}
+.skipnav a:active,.skipnav a:focus,.skipnav a:hover{position:absolute;top:0;left:0;z-index:50;width:100%;height:19px;margin:0;padding:5px 0;border:1px solid #c4d7ea;background:#2b6cb0;color:#fff;font-weight:700;font-size:1.333em;text-align:center;line-height:100%}
+
+/*! Browser Upgrade Prompt */
+.browserupgrade{margin:.2em 0;padding:.2em 0;background:#ccc;color:#000;font-size:1px}
+.browserupgrade strong{color:#000;font-weight:700}
+.browserupgrade a{color:#8d0080;font-weight:700;text-decoration:underline}
+
+/*! dimm */
+.dimm{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:99;background:#000;opacity:.6}
+.dimm img{display:block}
+
+/*! plugin */
+
+// prototype
+@import 'prototype';
+
+// layout
+@import 'layout';
+
+// 컨텐츠는 css 카테고리별로 나눠서 해당 카테고리의 css 파일만 불러온다.
+
+

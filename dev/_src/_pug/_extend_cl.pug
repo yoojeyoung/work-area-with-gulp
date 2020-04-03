@@ -1,0 +1,66 @@
+- var language = "ko";
+
+//- 공통 소스 세팅 영역
+//- 추가 인클루드는 _setting 안에다가 하기 여기 인클루드는 _setting 하나만 나와있게 관리하기
+include _setting
+
+doctype html
+
+//- 익스플로러 브라우저 핵 사용시, IE7 브라우저는 클래스 ie7 상속해서 사용.
+//- 익스플로러 브라우저 핵 사용시, IE8 브라우저는 클래스 ie8 상속해서 사용.
+//- 익스플로러 브라우저 핵 사용시, IE9 브라우저는 클래스 ie9 상속해서 사용.
+//- 예) .ie7 .location{border:1px solid red}
+
+//[if IE 7]><html lang="ko" class="ie7"><![endif]
+//[if IE 8]><html lang="ko" class="ie8"><![endif]
+//[if IE 9]><html lang="ko" class="ie9"><![endif]
+//[if gt IE 9]><!
+html(lang=`${language}`)
+	//<![endif]
+	head
+		//- meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no')
+		meta(http-equiv="X-UA-Compatible", content="IE=Edge")
+		meta(charset="utf-8")
+
+		- var title = metaTitle_common;
+		block title
+			title #{title}
+
+		block keywords&description
+			meta(name="keywords" content="")
+			meta(name="description" content="")
+
+		block property
+			meta(property="og:title" content="")
+			meta(property="og:url" content="")
+			meta(property="og:image" content="")
+			meta(property="og:description" content="")
+
+		//- link(rel="shortcut icon", href='')
+
+		block css
+			//- link(href=`${url_css_0}font.css`, type='text/css', rel='stylesheet')
+			//- link(href=`${url_css_0}reset.css`, type='text/css', rel='stylesheet')
+			//- link(href=`${url_css_0}print.css`, type='text/css', rel='stylesheet')
+			//- link(href=`${url_css_0}common.css`, type='text/css', rel='stylesheet')
+
+	//- body, wrap 등에 클래스 줘야 할때 사용함.
+	//- bodyClass 등의 변수는 아래 body 태그에서와 같이 사용함.
+	- var bodyClass = '';
+	- var wrapClass = '';
+
+	block vars
+
+	body(class=`${bodyClass}`)
+		//- ie8이하 브라우저 업그레이드 권장 안내 텍스트
+		+browserupgrade
+
+		block wrap
+
+		//- 딤드용 이미지
+		+dimm
+
+		//- 필요할 경우 세팅함.
+		block script
+			script(src=`${url_js_0}jquery.js`)

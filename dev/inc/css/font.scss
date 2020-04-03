@@ -1,0 +1,240 @@
+@charset "utf-8";
+
+// 추가 인클루드는 _setting 안에다가 하기 여기 인클루드는 _setting 하나만 나와있게 관리하기
+@import '../../_src/_scss/_setting';
+
+// http://wit.nts-corp.com/2017/02/13/4258
+// 웹폰트에 대한 참고 사이트 입니다.
+// 깜빡거림 현상 같은거 해결 방법 있음
+// fontfaceobserver.js
+
+
+/*! Nanum Barun Gothic (Korean) http://hangeul.naver.com */
+// @font-face {
+// 	font-family: 'Nanum Gothic';
+// 	font-style: bold;
+// 	font-weight: 700;
+// 	src: url(font/NanumGothic-Bold.eot);/* IE 호환성 보기 */
+// 	src: url(font/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),/* IE 6 ~ 8 */
+// 		url(font/NanumGothic-Bold.woff2) format('woff2'),/* WOFF2 지원 브라우저 */
+// 		url(font/NanumGothic-Bold.woff) format('woff'),모던 브라우저
+// 		url(font/NanumGothic-Bold.ttf) format('truetype');
+// }
+
+
+// @font-face {
+// 	font-family: NanumSquare;
+// 	src: url(NanumSquareR.eot); /* IE 6 ~ 8, IE 호환성 보기 */
+// 	src: local(☺),
+// 		url(NanumSquareR.woff2) format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+// 		url(NanumSquareR.woff) format('woff'), /* IE 9+, 모던 브라우저 */
+// 		url(NanumSquareR.ttf) format('truetype');
+// }
+
+// local(☺)
+
+//- 웹폰트를 사용하는 경우 font stylesheet 를 사용 합니다.
+//- 위 소스는 네이버의 나눔고딕 예제 입니다.
+//- 폰트의 경로등은 프로젝트시 개발그룹과 상의해서 정하세요.
+//- 폰트 파일은 요청해서 받으시기 바랍니다.
+//- 모바일에서는 웹폰트는 비추천입니다. 폰트다운속도도 느리고 다운받는것 전부 사용자 데이터 요금입니다.
+
+// :lang(en){font-family:"맑은 고딕";color:red;}
+// :lang(ko){font-family:"궁서";color:blue;}
+// 해당영역에 {영어폰트(영어만 지원해야함), 한글폰트, 기본폰트}로 순으로 폰트 설정하고 숫자만 인라인 테그로 처리
+
+@font-face {
+	font-family: NotoSans-Thin;
+	// font-weight: 250;
+	src: url('../fonts/notosanskr/NotoSans-Thin.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Thin.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Thin.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Thin.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-Light;
+	// font-weight: 300;
+	src: url('../fonts/notosanskr/NotoSans-Light.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Light.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Light.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-DemiLight;
+	// font-weight: 350;
+	src: url('../fonts/notosanskr/NotoSans-DemiLight.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-DemiLight.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-DemiLight.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-DemiLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-Regular;
+	// font-weight: 400;
+	src: url('../fonts/notosanskr/NotoSans-Regular.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Regular.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Regular.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-Medium;
+	// font-weight: 500;
+	src: url('../fonts/notosanskr/NotoSans-Medium.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Medium.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Medium.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-Bold;
+	// font-weight: 700;
+	src: url('../fonts/notosanskr/NotoSans-Bold.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Bold.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Bold.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: NotoSans-Black;
+	// font-weight: 900;
+	src: url('../fonts/notosanskr/NotoSans-Black.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/notosanskr/NotoSans-Black.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Black.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/notosanskr/NotoSans-Black.ttf') format('truetype');
+}
+
+
+
+
+
+
+@font-face {
+	font-family: Oswald-ExtraLight;
+	// font-weight: 200;
+	src: url('../fonts/oswald/Oswald-ExtraLight.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-ExtraLight.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-ExtraLight.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-ExtraLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Oswald-Light;
+	// font-weight: 300;
+	src: url('../fonts/oswald/Oswald-Light.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-Light.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-Light.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Oswald-Regular;
+	// font-weight: 400;
+	src: url('../fonts/oswald/Oswald-Regular.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-Regular.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-Regular.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Oswald-Medium;
+	// font-weight: 500;
+	src: url('../fonts/oswald/Oswald-Medium.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-Medium.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-Medium.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Oswald-SemiBold;
+	// font-weight: 600;
+	src: url('../fonts/oswald/Oswald-SemiBold.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-SemiBold.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-SemiBold.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Oswald-Bold;
+	// font-weight: 700;
+	src: url('../fonts/oswald/Oswald-Bold.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/oswald/Oswald-Bold.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/oswald/Oswald-Bold.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/oswald/Oswald-Bold.ttf') format('truetype');
+}
+
+
+
+@font-face {
+	font-family: Roboto-Regular;
+	// font-weight: 400;
+	src: url('../fonts/roboto/Roboto-Regular.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/roboto/Roboto-Regular.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/roboto/Roboto-Regular.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Roboto-Medium;
+	// font-weight: 500;
+	src: url('../fonts/roboto/Roboto-Medium.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/roboto/Roboto-Medium.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/roboto/Roboto-Medium.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Roboto-Bold;
+	// font-weight: 700;
+	src: url('../fonts/roboto/Roboto-Bold.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/roboto/Roboto-Bold.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/roboto/Roboto-Bold.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/roboto/Roboto-Bold.ttf') format('truetype');
+}
+
+
+
+
+@font-face {
+	font-family: MyriadPro-Regular;
+	// font-weight: 400;
+	src: url('../fonts/myriadpro/MyriadPro-Regular.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/myriadpro/MyriadPro-Regular.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/myriadpro/MyriadPro-Regular.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/myriadpro/MyriadPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: MyriadPro-Semibold;
+	// font-weight: 400;
+	src: url('../fonts/myriadpro/MyriadPro-Semibold.eot'); /* IE 6 ~ 8, IE 호환성 보기 */
+	src: local(☺),
+		url('../fonts/myriadpro/MyriadPro-Semibold.woff2') format('woff2'), /* IE Edge, WOFF2 지원 브라우저 */
+		url('../fonts/myriadpro/MyriadPro-Semibold.woff') format('woff'), /* IE 9+, 모던 브라우저 */
+		url('../fonts/myriadpro/MyriadPro-Semibold.ttf') format('truetype');
+}
+
+// 아래는 fontfaceobserver.js 사용할때 쓰는 클래스들
+.fonts-load{visibility: hidden;}
+// .font-load-end{visibility: visible;}
+// .fonts-loaded .font-load{visibility: visible;}
+.fonts-loaded .fonts-load {visibility: visible;}

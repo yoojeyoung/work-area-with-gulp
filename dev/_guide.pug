@@ -1,0 +1,188 @@
+.prototype-group
+	h2.prototype-tit01 [가이드] 기본
+
+	pre.code-info.
+		# 소스내 탭 공백을 사용하고 space 2칸 범위를 사용합니다.
+
+.prototype-group
+	h2.prototype-tit01 [가이드] CSS
+
+	pre.code-info.
+		# css 클래스 단어 구분은 ( - ) 대쉬를 사용 합니다.
+		# css 의 텍스트 속성에는 font-family, color, line-height, font-size 4가지 속성이 정의 되어야 합니다.
+		# css line-height 는 단위를 넣지 않고 사용합니다. (예: line-height:1.5)
+		# 위 비율을 계산 하는 방법은 PSD 에서 font-size가 20px 이고 line-height 가 34 이면 34 나누기 20 하면 1.7 이라는 비율이 나옵니다. 그 값을 사용하면 됩니다.
+		# sass, pug 이미지 url 공통 변수를 사용하지 않고 직접 입력합니다.
+		# sass font-size 는 _setting.scss 정의된 변수를 사용 합니다.
+		# sass font-family 는 _setting.scss 정의된 변수를 사용 합니다.
+
+.prototype-group
+	h2.prototype-tit01 [가이드] HTML
+
+	pre.code-info.
+		# table - caption 반응형을 고려한 마크업 형식
+		# caption 의 클래스명은 아래 같이 정의 해줍니다.
+		# 페이지마다 생성되는 순서대로 번호로 클래스명을 추가 해줍니다.
+
+		&#60;caption class="caption-페이지명-넘버링">
+			&#60;span class="txt01"> 테이블 이름 &#60;/span>
+			&#60;span class="txt02"> :th 이름 &#60;/span>
+			&#60;span class="txt03"> ,th 이름 &#60;/span>
+			&#60;span class="txt04"> ,th 이름 &#60;/span>
+			&#60;span class="txt05"> ,th 이름 &#60;/span>
+		&#60;/caption>
+
+		# table - colgroup 반응형을 고려한 마크업 형식
+		# colgroup 의 클래스명은 아래 같이 정의 해줍니다.
+		# 페이지마다 생성되는 순서대로 번호로 클래스명을 추가 해줍니다.
+
+		&#60;colgroup class="colgroup-페이지명-넘버링">
+			&#60;col class="col01">
+			&#60;col class="col02">
+			&#60;col class="col03">
+		&#60;/colgroup>
+
+.prototype-group
+	h2.prototype-tit01 [가이드] Images
+
+	pre.code-info.
+		# 헤더, 푸터의 공통 이미지들은 css sprite 를 사용 합니다.
+
+.prototype-group
+	h2.prototype-tit01 [가이드] 웹접근성
+
+	pre.code-info.
+		# 빈 태그에는 aria-hidden="true" 속성을 넣어줍니다. (예: &lt;em class="ico" aria-hidden="true"&gt;&lt;/em&gt;)
+
+		# 모바일에서 모든 a 태그는 아래의 속성이 공통으로 적용되어 있습니다.
+		# content:'공백문자', 아래와 같이 공백문자를 넣어서 초점영역을 정확히 잡아주는 역할을 합니다.
+		# a 태그의 before 속성을 사용하지 않도록 주의 합니다.
+		a:before{
+			content: '　';position:absolute;font-size:0;
+		}
+
+		# 새창으로 열리는 링크는 title="새창열림" 으로 통일합니다.
+		# 해당 기능의 대한 내용이 있을 경우 title 을 또 사용해서 내용이 중복되지 않도록 합니다.
+			예) &#60;a href="#" title="더보기">더보기&#60;/a>
+
+		# talbe - caption 입력 형식
+		# 테이블 이름: th, th, th, th
+		# 위와 같이 테이블 이름과 th 항목만 나열합니다. 뒤에 무슨무슨 테이블이라는 단어도 붙이지 않습니다.
+		# caption HTML 가이드도 확인 바랍니다.
+
+.prototype-group
+	h2.prototype-tit01 [가이드] 주석
+
+	pre.code-info.
+		# html 구분시
+		# &#60;!-- s: header -->
+		#         소스내용
+		# &#60;!-- e: header -->
+
+		# html 수정시
+		# &#60;!-- s: 20190520 수정 -->
+		#         소스내용
+		# &#60;!-- e: 20190520 수정 -->
+
+		# css 구분시
+		# /*! prototype */
+		# /*! prototype - pc */
+		# /*! prototype - mobile */
+		# /*! layout */
+		# /*! main */
+
+		# css 구분시 추가 내용이 필요할때
+		# /*!
+		#  * prototype
+		#  * 프로토타입 PC 버전
+		#  */
+
+		# /*!
+		#  * 컨텐츠 카테고리명
+		#  * 컨텐츠 설명 1
+		#  * 컨텐츠 설명 2
+		#  */
+
+.prototype-group
+	h2.prototype-tit01 [가이드] 폴더 구조
+
+	pre.code-info.
+		=== 산출물 제출용 가이드 및 프로토타입 작성 하기. 제출시에는 안내멘트들은 지워 주세요. (구성은 프로젝트에 맞춰서 구성하기) ===
+
+		# /inc/css/ - css 폴더
+		# /inc/js/ - 프론트 js 폴더
+		# /inc/fonts/ - 웹폰트 폴더
+		# /inc/layout/ - 공통 include 파일 폴더
+		# /images/ - 이미지 폴더
+
+.prototype-group
+	h2.prototype-tit01 [가이드] 공통 파일 설명
+
+	pre.code-info.
+		# cl.html - 코딩리스트
+		# prototype.html - 코딩 가이드
+
+.prototype-group
+	h2.prototype-tit01 [가이드] CSS 파일 설명
+
+	pre.code-info.
+		# common.css - 컨텐츠 css 파일 (언어별로 동일이름으로 존재합니다.)
+		# reset.css - 공통 브라우저 리셋 css 파일
+		# print.css - 공통 프린트 출력 설정 css 파일
+		# font.css - 공통 웹폰트 설정 css 파일
+
+		=== 추가로 생성되는 css 파일 설명 필요 ===
+
+.prototype-group
+	h2.prototype-tit01 [가이드] SASS 파일 구성 - 산출물 제출시 SASS 부분은 지우고 제출하기
+
+	pre.code-info.
+		# 공통 속성과 화면별 sass 로 분리 합니다.
+		# 각각의 sass 파일 안에는 다시 3개의 파일로 분리 됩니다.
+		# _mobile, _tablet, _pc 세 개의 브레이크 포인트로 구분 됩니다.
+
+		# _sprite_mobile.scss - mobile 스프라이트
+		# _sprite_pc.scss - pc 스프라이트
+		# _prototype.scss - 공통 프로토타입 (버튼, 탭, 테이블, 폼요소등)
+		# _layout.scss - 공통 레이아웃 (헤더, 푸터, 팝업, 레이아웃등)
+			ㄴ _layout_mobile.scss
+			ㄴ _layout_tablet.scss
+			ㄴ _layout_pc.scss
+
+		# 아래는 카테고리별 구성 예시
+		# company.scss - 회사소개 페이지
+			ㄴ _company_mobile.scss
+			ㄴ _company_tablet.scss
+			ㄴ _company_pc.scss
+
+		# main.scss - 메인 페이지
+			ㄴ _main_mobile.scss
+			ㄴ _main_tablet.scss
+			ㄴ _main_pc.scss
+
+		# product.scss - 상품 페이지
+			ㄴ _product_mobile.scss
+			ㄴ _product_tablet.scss
+			ㄴ _product_pc.scss
+
+		# recruit.scss - 채용 페이지
+			ㄴ _recruit_mobile.scss
+			ㄴ _recruit_tablet.scss
+			ㄴ _recruit_pc.scss
+
+		# etc.scss - 기타 (유틸, 푸터)
+			ㄴ _etc_mobile.scss
+			ㄴ _etc_tablet.scss
+			ㄴ _etc_pc.scss
+
+
+		=== 추가로 생성되는 sass 파일 설명 필요 20190514 ===
+
+.prototype-group
+	h2.prototype-tit01 [가이드] JS 파일 설명
+
+	pre.code-info.
+		# common.js - 프론트 ui 스크립트 파일
+		# jquery.js - 공통 jquery 플러그인
+
+		=== 추가로 생성되는 js 파일 설명 필요 ===

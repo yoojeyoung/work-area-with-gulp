@@ -1,0 +1,93 @@
+if language == "ko"
+	//- Tabs
+	mixin tab-list(tabs,active)
+		ul.nav.nav-tabs(role="tablist")
+			each item,index in tabs
+				if (index === active)
+					li.active
+						a(href="#tab#{item}",role="tab",data-toggle="tab")= item
+				else
+					li
+						a(href="#tab#{item}",role="tab",data-toggle="tab")= item
+		.tab-content
+			block
+
+
+	//- Tab pane
+	mixin tab(id,active)
+		if(active)
+			.tab-pane.active(id="tab#{id}")
+				block
+		else
+			.tab-pane(id="tab#{id}")
+				block
+
+
+
+
+
+
+
+
+
+
+
+
+else if language == "en"
+	//- Symentic Markup
+	mixin symentic-markup
+		header
+			h1 Welcome On Our Website!
+			p Here is our logo and slogan.
+
+		nav
+			header
+				h2 Choose Your Interest
+			ul
+				li
+					a(href="#") Menu 1
+				li
+					a(href="#") Menu 2
+				li
+					a(href="#") Menu 3
+
+		article
+			header
+				h1 Title of Article
+				h2 Subtitle of Article
+
+			section
+				h3 First Logical Part (e.g. "Theory")
+				p Paragraph 1 in first section
+
+				h4 Some Other Subheading in First Section
+				p Paragraph 2 in first section
+
+			section
+				h3 Second Logical Part (e.g. "Practice")
+				p Paragraph 1 in second section
+				p Paragraph 2 in second section
+
+			footer
+				h4 Author Bio
+				p Paragraph in Article's Footer
+
+			aside
+				h2 Get To Know Us Better
+				section
+					h3 Popular Posts
+					ul
+						li
+				section
+					h3 Partners
+					ul
+						li
+				section
+					h3 Testimonials
+					ul
+						li
+
+		footer
+			ul
+				li Copyright
+				li Social Media Links

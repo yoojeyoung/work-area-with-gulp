@@ -1,0 +1,735 @@
+extends _src/_pug/_extend_html5
+
+//- layout 에서 선언한 공통적인 title 값이 맨뒤에 들어 감.
+block title
+	title #{metaTitle_main} #{title}
+	//- 뎁스별로 경로 바꿀때
+	//- - var url_css_0 = url_css_1;
+	//- - var url_js_0 = url_js_1;
+	//- - var url_img_common_0 = url_img_common_1;
+
+block keywords&description
+	meta(name="keywords" content=`${metaKeywords_main}`)
+	meta(name="description" content=`${metaDescription_main}`)
+
+block property
+	meta(property="og:title" content=`${ogTitle_main}`)
+	meta(property="og:url" content=`${ogUrl_main}`)
+	meta(property="og:image" content=`${ogImage_main}`)
+	meta(property="og:description" content=`${ogDescription_main}`)
+
+append css
+	style.
+		#header{width:100%;height:50px;line-height:50px;text-align:center;background:black;color:#ffffff;}
+		#footer{width:100%;height:50px;line-height:50px;text-align:center;background:black;color:#ffffff;}
+		.prototype-group{margin-bottom:50px;}
+		.prototype-tit01{
+			text-align:left;font-size:20px;
+			padding:10px 10px 10px 10px;
+			background:#cccccc;font-weight:bold;line-height:1.5;
+		}
+		.input-checkbox{margin-right:10px;}
+		.input-radio{margin-right:10px;}
+		.code-info{display:block;background:#dceef9;color:#000000;padding:10px;border:1px dotted #000000;margin-top:20px;white-space:pre-wrap;line-height:1.5;font-size:14px;}
+		.btn-info-view{cursor:pointer;margin-top:10px;background:#000000;color:#ffffff;height:30px;padding:0 30px 0 10px;position:relative;}
+		.btn-info-view:before{display:block;content:'';width:9px;height:1px;background:#ffffff;position:absolute;top:50%;right:10px;margin-top:-1px;}
+		.btn-info-view:after{display:block;content:'';width:1px;height:9px;background:#ffffff;position:absolute;top:50%;right:14px;margin-top:-5px;}
+		.code-info-view{display:none;background:#DCEEE5;color:#000000;padding:10px;border:1px dotted #000000;margin-top:0;white-space:pre-wrap;line-height:1.5;font-size:14px;}
+		.btn-info-view.on + .code-info-view{display:block;}
+		.btn-info-view.on:after{display:none;}
+//- layout 에서 정의한 변수를 아래와 같이 페이지 별로 사용 가능.
+//- var bodyClass = 'index_page_body'
+//- var wrapClass = 'index_page_wrap'
+block vars
+	- var bodyClass = ''
+	- var wrapClass = ''
+
+block contents
+	#container
+
+		h1.hide-txt 프로토타입
+		#content(role='main')
+
+			//- 코딩가이드
+			include _guide
+
+			//- 프로토타입
+			.prototype-group
+				h2.prototype-tit01 input[type="checkbox"]
+				span.input-checkbox
+					input(type="checkbox", id="checkbox201", name="checkbox201")
+					label(for="checkbox201")
+						span.hide-txt 숨김텍스트처리
+				span.input-checkbox
+					input(type="checkbox", id="checkbox202", name="checkbox202", checked)
+					label(for="checkbox202")
+						span.hide-txt 숨김텍스트처리
+				span.input-checkbox
+					input(type="checkbox", id="checkbox203", name="checkbox203", disabled)
+					label(for="checkbox203")
+						span.hide-txt 숨김텍스트처리
+				span.input-checkbox
+					input(type="checkbox", id="checkbox204", name="checkbox204", checked, disabled)
+					label(for="checkbox204")
+						span.hide-txt 숨김텍스트처리
+				pre.code-info.
+					# 텍스트가 없는 기본형. (라디오버튼 내용 동일)
+					# 텍스트의 위치에 따라 right, left, up, down 클래스를 붙여줍니다.
+					# label 태그에는 width, height 값을 지정 하면 안됩니다.
+					# label 태그에는 가로 길이에 맞게 padding 을 조정합니다.
+					# 체크박스 및 라디오버튼의 선택표시는 이미지를 사용하지 않고 css를 사용했습니다.
+					# input 태그는 appearance를 사용하면 IE 에서는 기본 컴퍼넌트가 지워지지 않기 때문에 숨김텍스트 처리하듯이 지웠습니다.
+					# 애니메이션이 필요 없을 경우는 css에서 애니메이션 영역을 지우고 label:after 를 display:none; 처리하고 checked 되면 display:block; 되게 수정하면 됩니다.
+					# 신규타입을 만들때는 "input-checkbox-타입형태" 로 네이밍해서 만듭니다.
+					# 신규타입은 input-checkbox에 추가로 클래스 붙여서 css를 바꾸지 않고 위와 같은 네이밍으로 기본형태와 분리하여 css 작성해 줍니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;span class="input-checkbox">
+						&#60;input type="checkbox" id="checkbox201" name="checkbox201">
+						&#60;label for="checkbox201">
+							&#60;span class="hide-txt">숨김텍스트처리&#60;/span>
+						&#60;/label>
+					&#60;/span>
+
+			.prototype-group
+				h2.prototype-tit01 input[type="checkbox"] - 텍스트 위치 변경
+				span.input-checkbox.right
+					input(type="checkbox", id="checkbox211", name="checkbox211")
+					label(for="checkbox211")
+						span.txt 텍스트 오른쪽
+				span.input-checkbox.left
+					input(type="checkbox", id="checkbox221", name="checkbox221")
+					label(for="checkbox221")
+						span.txt 텍스트 왼쪽
+				span.input-checkbox.down
+					input(type="checkbox", id="checkbox231", name="checkbox231")
+					label(for="checkbox231")
+						span.txt 텍스트 아래쪽
+				span.input-checkbox.up
+					input(type="checkbox", id="checkbox241", name="checkbox241")
+					label(for="checkbox241")
+						span.txt 텍스트 위쪽
+
+			.prototype-group
+				h2.prototype-tit01 input[type="radio"]
+				span.input-radio
+					input(type="radio", id="radio201", name="radio201")
+					label(for="radio201")
+						span.hide-txt 숨김텍스트처리
+				span.input-radio
+					input(type="radio", id="radio202", name="radio202", checked)
+					label(for="radio202")
+						span.hide-txt 숨김텍스트처리
+				span.input-radio
+					input(type="radio", id="radio203", name="radio203", disabled)
+					label(for="radio203")
+						span.hide-txt 숨김텍스트처리
+				span.input-radio
+					input(type="radio", id="radio204", name="radio204", checked, disabled)
+					label(for="radio204")
+						span.hide-txt 숨김텍스트처리
+
+			.prototype-group
+				h2.prototype-tit01 input[type="radio"] - 텍스트 위치 변경
+				span.input-radio.right
+					input(type="radio", id="radio211", name="radio211")
+					label(for="radio211")
+						span.txt 텍스트 오른쪽
+				span.input-radio.left
+					input(type="radio", id="radio221", name="radio221")
+					label(for="radio221")
+						span.txt 텍스트 왼쪽
+				span.input-radio.down
+					input(type="radio", id="radio231", name="radio231")
+					label(for="radio231")
+						span.txt 텍스트 아래쪽
+				span.input-radio.up
+					input(type="radio", id="radio241", name="radio241")
+					label(for="radio241")
+						span.txt 텍스트 위쪽
+
+			.prototype-group
+				h2.prototype-tit01 input text
+				br
+				span.input-txt
+					input(type="text", title="검색어 입력", placeholder="검색어를 입력해주세요")
+				br
+				br
+				span.input-txt
+					input(type="text", title="검색어 입력", placeholder="읽기 전용", readonly)
+				pre.code-info.
+					# input text 기본형.
+					# 가로 길이는 span.input-txt에 정해주면 됩니다. input 가로길이는 항상 100% 입니다.
+					# 신규타입을 만들때는 "input-txt-타입형태" 로 네이밍해서 만듭니다.
+					# 신규타입은 input-txt에 추가로 클래스 붙여서 css를 바꾸지 않고 위와 같은 네이밍으로 기본형태와 분리하여 css 작성해 줍니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;span class="input-txt">
+						&#60;input type="text" title="검색어 입력" placeholder="검색어를 입력해주세요">
+					&#60;/span>
+
+			.prototype-group
+				h2.prototype-tit01 input date (IE 미지원)
+				br
+				span.input-date
+					input(type="date", title="날짜 선택", value="2019-02-28")
+				pre.code-info.
+					# input date 기본형.
+					# IE는 지원하지 않기 때문에 모바일웹에서 사용하기 적당합니다.
+					# 기본 컴퍼넌트는 웹접근성을 준수합니다.(인증마크 획득시 통과)
+					# 커스터마이징에 제약사항이 많습니다.
+					# 텍스트가 가운데정렬이 되지 않아 텍스트 오른쪽에 아이콘 이미지를 추가하는 형태를 만들어서 maring:0 auto; 등으로 달력 컴퍼넌트 전체를 가운데 정렬해서 사용해야 합니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;span class="input-date">
+						&#60;input type="date" title="날짜 선택" value="2019-02-28">
+					&#60;/span>
+
+			.prototype-group
+				h2.prototype-tit01 셀렉트 박스 (IE9 부터 지원)
+				br
+				span.selectbox
+					select(title="")
+						option(value="") 선택
+						option(value="") 아이템1
+						option(value="") 아이템2
+				br
+				br
+				span.selectbox
+					select(title="", disabled)
+						option(value="") disabled
+						option(value="") 아이템1
+						option(value="") 아이템2
+				pre.code-info.
+					# selectbox 기본형.
+					# IE9도 지원 합니다.
+					# span.selectbox 의 가로 길이를 조정 합니다.
+					# select의 가로는 항상 100% 입니다.
+					# 신규타입을 만들때는 "selectbox-타입형태" 로 네이밍해서 만듭니다.
+					# 신규타입은 selectbox에 추가로 클래스 붙여서 css를 바꾸지 않고 위와 같은 네이밍으로 기본형태와 분리하여 css 작성해 줍니다.
+					# 셀렉트박스는 사용시 웹접근성 준수를 위하여 선택 후 "버튼"을 누를 수 있도록 퍼블리싱되어야 합니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;span class="selectbox">
+						&#60;select title="">
+							&#60;option value="">선택&#60;/option>
+							&#60;option value="">아이템1&#60;/option>
+							&#60;option value="">아이템2&#60;/option>
+						&#60;/select>
+					&#60;/span>
+
+			.prototype-group
+				h2.prototype-tit01 페이지 네비게이션
+				br
+				//- mixin source
+				mixin pagNav
+					.paginav
+						a(href="#none").paging-util.btn-paging-first
+							span.hide-txt 첫 페이지
+							em.icon(aria-hidden="true")
+						a(href="#none").paging-util.btn-paging-prev
+							span.hide-txt 이전 페이지
+							em.icon(aria-hidden="true")
+						.paging-list
+							span.paging-num.on
+								span.txt 1
+							a(href="#none").paging-num
+								span.txt 2
+							a(href="#none").paging-num
+								span.txt 3
+							a(href="#none").paging-num
+								span.txt 4
+							a(href="#none").paging-num
+								span.txt 5
+						a(href="#none").paging-util.btn-paging-next
+							span.hide-txt 다음 페이지
+							em.icon(aria-hidden="true")
+						a(href="#none").paging-util.btn-paging-last
+							span.hide-txt 마지막 페이지
+							em.icon(aria-hidden="true")
+
+				//- minxin run
+				+pagNav
+				pre.code-info.
+					# 페이지네비게이션 기본형.
+					# 빈 태그에는 aria-hidden="true" 라고 처리해야 스크린 리더나 보이스오버, 토크백등에서 읽지 않습니다.
+					# 신규타입을 만들때는 "paginav-타입형태" 로 네이밍해서 만듭니다.
+					# 신규타입은 paginav에 추가로 클래스 붙여서 css를 바꾸지 않고 위와 같은 네이밍으로 기본형태와 분리하여 css 작성해 줍니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;div class="paginav">
+						&#60;a class="paging-util btn-paging-first" href="#none">
+							&#60;span class="hide-txt">첫 페이지&#60;/span>
+							&#60;em class="icon" aria-hidden="true">&#60;/em>
+						&#60;/a>
+						&#60;a class="paging-util btn-paging-prev" href="#none">
+							&#60;span class="hide-txt">이전 페이지&#60;/span>
+							&#60;em class="icon" aria-hidden="true">&#60;/em>
+						&#60;/a>
+						&#60;div class="paging-list">
+							&#60;span class="paging-num on">
+								&#60;span class="txt">1&#60;/span>
+							&#60;/span>
+							&#60;a class="paging-num" href="#none">
+								&#60;span class="txt">2&#60;/span>
+							&#60;/a>
+							&#60;a class="paging-num" href="#none">
+								&#60;span class="txt">3&#60;/span>
+							&#60;/a>
+							&#60;a class="paging-num" href="#none">
+								&#60;span class="txt">4&#60;/span>
+							&#60;/a>
+							&#60;a class="paging-num" href="#none">
+								&#60;span class="txt">5&#60;/span>
+							&#60;/a>
+						&#60;/div>
+						&#60;a class="paging-util btn-paging-next" href="#none">
+							&#60;span class="hide-txt">다음 페이지&#60;/span>
+							&#60;em class="icon" aria-hidden="true">&#60;/em>
+						&#60;/a>
+						&#60;a class="paging-util btn-paging-last" href="#none">
+							&#60;span class="hide-txt">마지막 페이지&#60;/span>
+							&#60;em class="icon" aria-hidden="true">&#60;/em>
+						&#60;/a>
+					&#60;/div>
+
+			.prototype-group
+				h2.prototype-tit01 버튼 타입 - 1
+				br
+				button(type="button", title="").bttn.type01.style01
+					em.ico02(aria-hidden="true")
+					span.txt01 button태그 - 라운드
+				a(href="#none", role="button").bttn.type01.style02
+					em.ico02(aria-hidden="true")
+					span.txt01 a태그지만 버튼역할 - 라운드
+
+			.prototype-group
+				h2.prototype-tit01 버튼 타입 - 2
+				br
+				button(type="button", title="").bttn.type02.style01
+					span.txt01 button태그 - 사각형
+					em.ico01(aria-hidden="true")
+				a(href="#none").bttn.type02.style02
+					span.txt01 a태그 링크역할 - 사각형
+					em.ico01(aria-hidden="true")
+
+			.prototype-group
+				h2.prototype-tit01 버튼 타입 - 3
+				br
+				button(type="button", title="").bttn.style01.type03
+					span.txt01
+						| button태그 - 사각형 -
+						br
+						| 최소 width 값 지정 -
+						br
+						| 텍스트 왼쪽 정렬
+					em.ico03(aria-hidden="true")
+				a(href="#none").bttn.style02.type03
+					span.txt01
+						| a태그 링크역할 - 사각형 -
+						br
+						| 최소 width 값 지정 -
+						br
+						| 텍스트 왼쪽 정렬
+					em.ico03(aria-hidden="true")
+
+			.prototype-group
+				h2.prototype-tit01 버튼 타입 - 4
+				br
+				button(type="button", title="").bttn.style01.type04
+					em.ico04(aria-hidden="true")
+					span.txt01
+						| button태그 - 사각형 -
+						br
+						| 최소 width 값 지정 -
+						br
+						| 텍스트 오른쪽 정렬
+				a(href="#none").bttn.style02.type04
+					em.ico04(aria-hidden="true")
+					span.txt01
+						| a태그 링크역할 - 사각형 -
+						br
+						| 최소 width 값 지정 -
+						br
+						| 텍스트 오른쪽 정렬
+
+
+
+				pre.code-info.
+					# 기본클래스는 최대한 유니크하게 하기 위하여 button -> bttn 으로 줄여서 사용합니다.
+					# 버튼은 기본클래스 + 타입 + 스타일의 클래스를 조합해서 사용합니다.
+					# 조합의 종류는 각 프로젝트의 스타일가이드에 맞춰서 만들도록 합니다.
+					# 아이콘 영역을 제거하면 텍스트 버튼으로 사용 가능합니다.
+					# 아이콘 영역은 빈태그이며 보이스 오버나 스크린리더에 읽히지 않도록 aria-hidden="true" 처리 해줍니다.
+
+					# 버튼 타입은 type01 형태로 추가 가능합니다.
+					# 버튼 스타일은 style01 형태로 추가 가능합니다.
+					# 버튼 자식요소 텍스트 및 아이콘등은 txt01, ico01 형태로 추가 가능합니다.
+
+					# 다른페이지로 이동하는 링크 버튼과 기능 버튼을 구분해서 사용 합니다.
+					# &#60;a>&#60;/a> 태그는 링크 버튼에 사용합니다.
+					# &#60;button>&#60;/button> 태그는 링크 이동이 아닌 기능 버튼에 사용합니다.
+					# &#60;a role="button">&#60;/a> 태그를 기능 버튼으로 사용해야 하는 경우는 aria 태그의 role="button" 속성을 넣어 줍니다.
+
+			.prototype-group
+				h2.prototype-tit01 탭 메뉴
+				br
+				.tab-menu-type01.center
+					ul.tab-list
+						li
+							a(href="#none", data-id="msg45").item 탭 메뉴1
+						li
+							a(href="#none", data-id="msg46").item 탭 메뉴2
+						li
+							a(href="#none", data-id="msg47").item 탭 메뉴3
+						li
+							a(href="#none", data-id="msg48").item 탭 메뉴4
+
+				pre.code-info.
+					# 탭 메뉴 리스트 갯수 제한 없이 좌측 정렬 됩니다.
+					# width:100% 기준이며, 컨텐츠보다 커질 경우 overflow:hidden 처리 되어 있습니다.
+					# 텝 메뉴 가로 스크롤을 사용할 경우, .tab-list에 클래스 추가하여 width 값을 넣으면 됩니다.
+					# 탭 메뉴 리스트 갯수가 정해져 있을 경우 클래스를 추가하여 가운데 정렬할 수 있습니다. ( default : left )
+					# center : .tab-menu-type01.center, right : .tab-menu-type01.right
+					# 2개 : .col2, 3개 : .col3... 각 갯수에 맞게 .col[value] 지정하시면 됩니다 (최대 5개)
+					# 리스트 사이 여백은 클래스 추가하여 사용합니다.
+					# 탭 메뉴 type-01의 경우, 텍스트가 두줄이 되지 않고, 아이콘이 없을 때, 리스트 갯수가 자주 변하지 않는 레이아웃에 적합합니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;div class="tab-menu-type01 center">
+						&#60;ul class="tab-list">
+							&#60;li>
+								&#60;a class="item" href="#none">탭 메뉴1&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">탭 메뉴2&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">탭 메뉴3&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">탭 메뉴4&#60;/a>
+							&#60;/li>
+						&#60;/ul>
+					&#60;/div>
+
+			.prototype-group
+				h2.prototype-tit01 탭 메뉴 (테이블 형식)
+				br
+				.tab-menu-type02
+					ul.tab-list
+						li
+							a(href="#none").item
+								span.txt(data-id="msg49") 탭 메뉴1
+						li
+							a(href="#none").item
+								span.txt(data-id="msg50") 탭 메뉴2
+								em.icon(aria-hidden="true")
+						li
+							a(href="#none").item
+								span.txt(data-id="msg51") 탭 메뉴3
+						li
+							a(href="#none").item
+								span.txt(data-id="msg52") 탭 메뉴4
+								em.icon(aria-hidden="true")
+				pre.code-info.
+					# 탭 메뉴 리스트의 넓이를 지정할 경우, .tab-menu-type02 에 별도의 클래스를 추가하여 지정합니다.
+					# 탭 메뉴 중앙정렬이 필요한 경우, .tab-menu-type02에 .center 추가. 오른쪽이 정렬할 경우 .right (부모태그에 .clfix 추가해 주셔야 합니다.) default : left
+					# 텝 메뉴 텍스트가 두줄일 경우, br 태그를 사용하지 않고 span.txt 태그를 추가하여 사용 합니다.
+					# 텍스트 좌측, 우측 정렬시 .tab 에 별도의 클래스 추가하여 사용합니다.
+
+				button(type="button").btn-info-view 소스보기
+				pre.code-info-view.
+					&#60;div class="tab-menu-type02">
+						&#60;ul class="tab-list">
+							&#60;li>
+								&#60;a class="item" href="#none">
+									&#60;span class="txt">탭 메뉴1&#60;/span>
+								&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">
+									&#60;span class="txt">탭 메뉴2&#60;/span>
+									&#60;em class="icon" aria-hidden="true">&#60;/em>
+								&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">
+									&#60;span class="txt">탭 메뉴3&#60;/span>
+								&#60;/a>
+							&#60;/li>
+							&#60;li>
+								&#60;a class="item" href="#none">
+									&#60;span class="txt">탭 메뉴4&#60;/span>
+									&#60;em class="icon" aria-hidden="true">&#60;/em>
+								&#60;/a>
+							&#60;/li>
+						&#60;/ul>
+					&#60;/div>
+
+			.prototype-group
+				h2.prototype-tit01 테이블 (col 타입 1)
+				.table-wrap-type01
+					table.table-col-type01
+						caption.caption-prototype01-02
+							span.txt01 공시자료
+							span.txt02 :번호
+							span.txt03 ,보고서명
+							span.txt04 ,등록일
+						colgroup.colgroup-prototype01-02
+							col.col01
+							col.col02
+							col.col03
+						thead
+							tr
+								th
+									span.txt 번호
+								th
+									span.txt 보고서명
+								th
+									span.txt 등록일
+						tbody
+							tr
+								td 10
+								td.left 기업설명회(IR)개최(안내공시)
+								td 2019.04.05
+							tr
+								td 9
+								td.left 기업설명회(IR)개최(안내공시)
+								td 2019.04.05
+							tr
+								td 8
+								td.left 기업설명회(IR)개최(안내공시)
+								td 2019.04.05
+							tr
+								td 7
+								td.left 기업설명회(IR)개최(안내공시)
+								td 2019.04.05
+
+			.prototype-group
+				h2.prototype-tit01 테이블 (col 타입 1)
+				.table-wrap-type01
+					table.table-col-type01
+						caption.caption-prototype01-03
+							span.txt01 감사위원회 활동 내역
+							span.txt02 :회차
+							span.txt03 ,개최일자
+							span.txt04 ,의안내용
+							span.txt04 ,가결여부
+							span.txt04 ,사외이사 출석현황
+						colgroup.colgroup-prototype01-03
+							col.col01
+							col.col02
+							col.col03
+							col.col04
+							col.col05
+						thead
+							tr
+								th
+									span.txt 회차
+								th
+									span.txt 개최일자
+								th
+									span.txt 의안내용
+								th
+									span.txt 가결여부
+								th
+									span.txt 사외이사 출석현황
+						tbody
+							tr
+								td(rowspan="2") 제5차
+								td(rowspan="2") 2018.10.25
+								td.left 외부감사인 검토 진행경과 보고의 건
+								td -
+								td(rowspan="2") 3/3
+							tr
+								td.left 2018년 3분기 재무제표(案) 보고의 건
+								td -
+
+			.prototype-group
+				h2.prototype-tit01 테이블 (col 타입 1)
+				.table-wrap-type01
+					table.table-col-type01
+						caption.caption-prototype01-04
+							span.txt01 사이버 신문고
+							span.txt02 :E-mail
+							span.txt03 ,Tel
+							span.txt04 ,Fax
+							span.txt04 ,주소
+							span.txt04 ,바로가기
+						colgroup.colgroup-prototype01-04
+							col.col01
+							col.col02
+							col.col03
+							col.col04
+							col.col05
+						thead
+							tr
+								th
+									span.txt E-mail
+								th
+									span.txt Tel
+								th
+									span.txt Fax
+								th
+									span.txt 주소
+								th
+									span.txt 바로가기
+						tbody
+							tr
+								td.middle lethicsoffice@lgchem.com
+								td.middle 02-785-2020
+								td.middle 02-3773-7099
+								td.middle
+									.txt01 서울시 영등포구 여의대로 128
+									.txt01 LG트윈타워 동관 24층
+									.txt01 LG화학 윤리사무국
+								td.middle
+									.link01
+										a(href="#none" title="새창열림" target="_blank").btn-link01
+											span.txt 사이버신문고 홈
+											em.ico(aria-hidden="true")
+									.link01
+										a(href="#none" title="새창열림" target="_blank").btn-link01
+											span.txt 제보유형
+											em.ico(aria-hidden="true")
+									.link01
+										a(href="#none" title="새창열림" target="_blank").btn-link01
+											span.txt 제보대상
+											em.ico(aria-hidden="true")
+									.link01
+										a(href="#none" title="새창열림" target="_blank").btn-link01
+											span.txt 제보자 보호항목
+											em.ico(aria-hidden="true")
+
+			.prototype-group
+				h2.prototype-tit01 테이블 (col 타입 2)
+				.table-wrap-type02
+					table.table-col-type02
+						caption.caption-prototype02-01
+							span.txt01 전자공고
+							span.txt02 :번호
+							span.txt03 ,공고명
+							span.txt04 ,다운로드
+						colgroup.colgroup-prototype02-01
+							col.col01
+							col.col02
+							col.col03
+						thead
+							tr
+								th
+									span.txt 번호
+								th
+									span.txt 공고명
+								th
+									span.txt 다운로드
+						tbody
+							tr
+								td 10
+								td.left
+									a(href="#none").txt-link
+										span.line-clamp a 태그 있을때 - 2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고
+								td
+									a(href="#none" role="button").btn-download-dark
+										span.hide-txt 자료 다운로드
+										em.ico(aria-hidden="true")
+							tr
+								td 9
+								td.left
+									.line-clamp
+										| a 태그 없을때 - 2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고
+								td
+									a(href="#none" role="button").btn-download-dark
+										span.hide-txt 자료 다운로드
+										em.ico(aria-hidden="true")
+							tr
+								td 8
+								td.left
+									a(href="#none").txt-link 2018년 제18기 결산공고
+								td
+									a(href="#none" role="button").btn-download-dark
+										span.hide-txt 자료 다운로드
+										em.ico(aria-hidden="true")
+							tr
+								td 7
+								td.left
+									a(href="#none").txt-link 2018년 제18기 결산공고
+								td
+									a(href="#none" role="button").btn-download-dark
+										span.hide-txt 자료 다운로드
+										em.ico(aria-hidden="true")
+
+			.prototype-group
+				h2.prototype-tit01 테이블 (col 타입 2)
+				.table-wrap-type02
+					table.table-col-type02
+						caption.caption-prototype02-02
+							span.txt01 공시자료
+							span.txt02 :번호
+							span.txt03 ,보고서명
+							span.txt04 ,등록일
+						colgroup.colgroup-prototype02-02
+							col.col01
+							col.col02
+							col.col03
+						thead
+							tr
+								th
+									span.txt 번호
+								th
+									span.txt 보고서명
+								th
+									span.txt 등록일
+						tbody
+							tr
+								td 10
+								td.left
+									a(href="#none").txt-link
+										span.line-clamp a 태그 있을때 - 2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고
+								td 2019.03.25
+							tr
+								td 9
+								td.left
+									.line-clamp
+										| a 태그 없을때 - 2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고2018년 제18기 결산공고
+								td 2019.03.25
+							tr
+								td 8
+								td.left
+									a(href="#none").txt-link 2018년 제18기 결산공고
+								td 2019.03.25
+							tr
+								td 7
+								td.left
+									a(href="#none").txt-link 2018년 제18기 결산공고
+								td 2019.03.25
+
+			//- .prototype-group
+			//- 	h2.prototype-tit01 페이지 네비게이션
+			//- 	br
+			//- 	+pagNav
+			//- 	br
+
+append script
+	script(src=`${url_js_0}jquery.js`, type='text/javascript', charset='utf-8')
+	script.
+		$(function(){
+
+			$('.btn-info-view').on('click', function(e){
+				e.preventDefault();
+				var isAlreadyOpen = $(this).hasClass('on');
+
+				if (!isAlreadyOpen) {
+					$(this).addClass('on');
+				} else {
+					$(this).removeClass('on');
+				}
+			});
+
+		});

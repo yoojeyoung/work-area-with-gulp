@@ -1,0 +1,704 @@
+@charset "utf-8";
+// 스프라이트 이미지 include 사용 예제
+// PC 용 - @include sprite-custom($pc-ico-paginav-first);
+// Mobile 용 - @include retina-sprite-custom($mobile-ico-paginav-first-group);
+
+// 아래 소스는 PC 기준.
+// 모바일 소스는 아래 소스를 변경해서 사용.
+// 반응형 소스는 PC를 복사해서 소스 2벌 만들기. (미디어쿼리 사용)
+// PC, Mobile 소스간 간섭을 막기 위함.
+
+/*! btn */
+.bttn{
+	display:inline-block;vertical-align: middle;
+	position:relative;
+	cursor: pointer;
+}
+
+// 버튼 타입 설정 (모양등)
+.bttn.type01{
+	padding:10px 20px 10px 20px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 20px;
+}
+.bttn.type02{
+	padding:10px 20px 10px 20px;
+	line-height: 30px;
+	text-align: center;
+}
+.bttn.type03{
+	min-width:280px;
+	padding:10px 10px 10px 10px;
+	line-height: 30px;
+	text-align: left;
+}
+.bttn.type04{
+	min-width:280px;
+	padding:10px 10px 10px 10px;
+	line-height: 30px;
+	text-align: right;
+}
+
+// 버튼 스타일 설정 (배경컬러, 보더등)
+.bttn.style01{
+	background:orange;
+	border:1px solid orange;
+}
+.bttn.style02{
+	background: lightcoral;
+	border:1px solid lightcoral;
+}
+
+// 버튼 자식요소 - 텍스트
+.bttn .txt01{
+	display:inline-block;vertical-align: middle;
+	font-size:16px;color:#000000;
+	line-height: 1.2;
+}
+
+// 버튼 자식요소 - 아이콘
+.bttn .ico01{
+	display:inline-block;vertical-align: middle;
+	margin-left:10px;
+	@include sprite-custom($pc-ico-paginav-last);
+}
+.bttn .ico02{
+	display:inline-block;vertical-align: middle;
+	margin-right:10px;
+	@include sprite-custom($pc-ico-paginav-first);
+}
+.bttn .ico03{
+	display:block;position:absolute;top:50%;right:10px;
+	margin-top:-8px;
+	@include sprite-custom($pc-ico-paginav-last);
+}
+.bttn .ico04{
+	display:block;position:absolute;top:50%;left:10px;
+	margin-top:-8px;
+	@include sprite-custom($pc-ico-paginav-first);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*! form */
+// form - checkbox
+.input-checkbox{
+	display:inline-block;
+	height:20px;
+	input{
+		border: 0;
+		clip: rect(0 0 0 0);
+		width: 1px;height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+	}
+	.txt{
+		display:inline-block;
+		line-height: 1;
+		color:#000000;font-size:14px;
+	}
+	label{
+		display:inline-block;
+		padding:0 10px 0 10px;
+		position: relative;
+		user-select: none;
+	}
+	label:before{
+		content:'';
+		box-sizing: border-box;
+		position: absolute;
+		top: 50%;left: 0;
+		width: 20px;height: 20px;
+		margin-top: -10px;
+		border: 2px solid grey;
+		text-align: center;
+	}
+	label:after{
+		// 애니메이션 제거시 아래 display 주석 해제 하기
+		// display:none;
+		content:'';
+		position: absolute;
+		top: 50%;left: 5px;
+		width: 8px;height: 3px;
+		margin-top: -4px;
+		border-top:0;border-right:0;
+		border-bottom:3px solid #900900;
+		border-left:3px solid #900900;
+		transform: rotate(-45deg);
+	}
+	&.right{
+		label{padding:0 0 0 24px;}
+		label:before{margin-top:-12px;}
+		label:after{margin-top:-6px;}
+	}
+	&.left{
+		label{padding:0 24px 0 0;}
+		label:before{left:auto;right:0;margin-top:-12px;}
+		label:after{left:auto;right:4px;margin-top:-6px;}
+	}
+	&.up{
+		label{padding:0 0 20px 0;}
+		label:before{top:auto;bottom:0;left:50%;margin-left:-10px;margin-top:0;}
+		label:after{top:auto;bottom:8px;left:50%;margin-left:-5px;margin-top:0;}
+	}
+	&.down{
+		label{padding:20px 0 0 0;}
+		label:before{top:0;left:50%;margin-left:-10px;margin-top:0;}
+		label:after{top:6px;left:50%;margin-left:-5px;margin-top:0;}
+	}
+	input:focus + label:before{border-color:black;}
+	input:hover + label:before{border-color:black;}
+	input:disabled:focus + label:before{border-color:grey;}
+	input:disabled:hover + label:before{border-color:grey;}
+	// 애니메이션 제거시 아래 display 주석 해제 하기
+	// input:checked + label:after{display:block;}
+	input:disabled + label:before{opacity: 0.5;}
+	input:disabled + label:after{opacity: 0.5;}
+
+	// 애니메이션 영역 - 필요 없을시 아래 소스 삭제하기
+	label:after{
+		transform: rotate(-45deg) scale(0);
+		transition:none;
+	}
+	input:checked + label:after {
+		transform: rotate(-45deg) scale(1);
+		transition: transform 200ms ease-out;
+	}
+}
+
+// form - radio
+.input-radio{
+	display:inline-block;
+	height:20px;
+	input{
+		border: 0;
+		clip: rect(0 0 0 0);
+		width: 1px;height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+	}
+	.txt{
+		display:inline-block;
+		line-height: 1;
+		color:#000000;font-size:14px;
+	}
+	label{
+		display:inline-block;
+		position: relative;
+		padding: 0 10px 0 10px;
+		user-select: none;
+	}
+	label:before{
+		content:'';
+		box-sizing: border-box;
+		position: absolute;
+		top: 50%;left: 0;
+		width: 20px;height: 20px;
+		margin-top: -10px;
+		border: 2px solid grey;
+		text-align: center;
+		border-radius: 50%;
+	}
+	label:after{
+		// 애니메이션 제거시 아래 display 주석 해제 하기
+		// display:none;
+		content:'';
+		background-color: #900;
+		position: absolute;
+		top: 50%;left: 5px;
+		width: 10px;height: 10px;
+		margin-top: -5px;
+		border-radius: 50%;
+	}
+	&.right{
+		label{padding:0 0 0 24px;}
+		label:before{margin-top:-12px;}
+		label:after{margin-top:-7px;}
+	}
+	&.left{
+		label{padding:0 24px 0 0;}
+		label:before{left:auto;right:0;margin-top:-12px;}
+		label:after{left:auto;right:5px;margin-top:-7px;}
+	}
+	&.up{
+		label{padding:0 0 20px 0;}
+		label:before{top:auto;bottom:0;left:50%;margin-left:-10px;margin-top:0;}
+		label:after{top:auto;bottom:5px;left:50%;margin-left:-5px;margin-top:0;}
+	}
+	&.down{
+		label{padding:20px 0 0 0;}
+		label:before{top:0;left:50%;margin-left:-10px;margin-top:0;}
+		label:after{top:5px;left:50%;margin-left:-5px;margin-top:0;}
+	}
+	input:focus + label:before{border-color:black;}
+	input:hover + label:before{border-color:black;}
+	input:disabled:focus + label:before{border-color:grey;}
+	input:disabled:hover + label:before{border-color:grey;}
+	// 애니메이션 제거시 아래 display 주석 해제 하기
+	// input:checked + label:after{display:block;}
+	input:disabled + label:before{opacity: 0.5;}
+	input:disabled + label:after{opacity: 0.5;}
+
+	// 애니메이션 영역 - 필요 없을시 아래 소스 삭제하기
+	label:after{
+		transform: rotate(-45deg) scale(0);
+		transition:none;
+	}
+	input:checked + label:after {
+		transform: rotate(-45deg) scale(1);
+		transition: transform 200ms ease-out;
+	}
+}
+
+// form - input text
+.input-txt{
+	display:inline-block;position:relative;width:100%;
+	border:1px solid #cccccc;
+	box-sizing: border-box;background-color: #ffffff;
+	input{
+		display:inline-block;padding:0 0 0 15px; width:100%;font-size:12px;
+		height:38px;line-height:38px;border:none;box-sizing: border-box;
+		appearance: none;border-radius: 0;
+	}
+}
+.input-txt input:read-only{opacity:0.5;}
+
+// form - placeholder
+// Chrome, Firefox, Opera, Safari 10.1+
+.input-txt input::placeholder{
+	font-size:12px;color:#999999;
+	background:transparent;
+	// 아래 속성은 Firefox 용
+	opacity: 1;
+}
+.input-txt input:-ms-input-placeholder{position:relative;top:1px;}
+.input-txt input::-ms-input-placeholder{position:relative;top:1px;}
+
+// form - selectbox
+.selectbox{
+	position:relative;z-index:0;display:inline-block;width:100%;
+	overflow:hidden;border:1px solid #cccccc;
+	box-sizing: border-box;
+	&:after{
+		content:'';display:block;position:absolute;
+		top:50%;right:0;margin-top:-3px;
+		@include sprite-custom($pc-ico-selectbox-down);
+	}
+	select{
+		vertical-align:middle;
+		border:none;appearance:none;border-radius:0;
+		width:100%;
+		padding:0 0 0 15px;
+		box-sizing: border-box;
+		height:38px;
+		line-height:38px;
+		background-color:transparent;
+		position: relative;z-index: 1;
+	}
+	select::-ms-expand{display:none;}
+	select:disabled{opacity:0.5;}
+}
+.ie9 select{
+	width:calc(100% + 20px);
+	padding:12px 0 10px 15px;
+	height:auto;
+}
+// ie10 ~ ie11 에만 적용되는 css 를 만들때 사용하는 미디어쿼리 소스
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	// IE10+ CSS here
+	.selectbox{
+		// 텍스트 수직 중앙정렬을 위해서 ie10 ~ 11 속성 재정의
+		select{
+			padding:12px 0 10px 15px;
+			height:auto;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*! page navigation */
+// page navigation
+.paginav{text-align:center;}
+.paging-util{
+	position: relative;
+	display:inline-block;
+	width:40px;height:40px;line-height: 40px;
+	border:1px solid #dddddd;
+	vertical-align: top;
+	.icon{position:absolute;top:50%;left:50%;}
+}
+.btn-paging-first .icon{
+	@include sprite-custom($pc-ico-paginav-first);
+	margin:-7px 0 0 -7px;
+}
+.btn-paging-prev .icon{
+	@include sprite-custom($pc-ico-paginav-prev);
+	margin:-7px 0 0 -4px;
+}
+.btn-paging-next .icon{
+	@include sprite-custom($pc-ico-paginav-next);
+	margin:-7px 0 0 -4px;
+}
+.btn-paging-last .icon{
+	@include sprite-custom($pc-ico-paginav-last);
+	margin:-7px 0 0 -7px;
+}
+.paging-list{display:inline-block;vertical-align: top;}
+.paging-num{
+	display:inline-block;;
+	width:40px;height:40px;line-height: 40px;
+	border:1px solid #dddddd;
+	vertical-align: top;
+	.txt{font-size:14px;color:#777777;}
+	&.on{background-color:#bb0841;border:1px solid #bb0841;}
+	&.on .txt{color:#ffffff;text-decoration: underline;}
+	&:active,
+	&:focus{background-color:#bb0841;border:1px solid #bb0841;}
+	&:active .txt,
+	&:focus .txt{color:#ffffff;text-decoration: underline;}
+	&:hover{background-color:#bb0841;border:1px solid #bb0841;}
+	&:hover .txt{color:#ffffff;text-decoration: underline;}
+}
+
+
+
+
+
+
+
+/*! tab menu */
+//tab-menu line-block Type
+.tab-menu-type01 {
+	width:100%; overflow-x: auto;
+	.tab-list {font-size:0;}
+
+	&.col2 li {width:50%;}
+	&.col3 li {width:33.33%;}
+	&.col4 li {width:25%;}
+	&.col5 li {width:20%;}
+
+	&.center {text-align: center;}
+	&.right {text-align: right;}
+}
+
+.tab-menu-type01 li {
+	display: inline-block;
+	text-align: center; vertical-align: top;
+	border:1px solid #ddd;
+	box-sizing: border-box;
+
+	.item {
+		display:inline-block; width:100%;
+		padding:10px 15px;
+		font-size:18px; color:#333; vertical-align: top;
+		box-sizing: border-box;
+	}
+}
+
+// tab-menu table Type
+.tab-menu-type02 {
+	display: table; width:100%; overflow-x:auto;
+
+	&.center {margin:0 auto;}
+	&.right {float:right;}
+}
+
+.tab-menu-type02 .tab-list {display: table-row; text-align: center;}
+.tab-menu-type02 li {
+	display: table-cell;
+	border:1px solid #ddd;
+	.item {
+		display: inline-block; width:100%;
+		padding:30px 15px;
+		font-size:18px; color:#333;
+		vertical-align: middle; box-sizing: border-box;
+
+		.txt {display: block;}
+	}
+}
+
+
+
+
+
+
+
+
+/*! table */
+// col 타입 1
+.table-wrap-type01{
+	width:100%;max-width:1280px;
+	margin:0 auto;padding-top:12px;
+}
+.table-col-type01{
+	width:100%;
+	background:#edeef3;
+
+	th{
+		color:#333130;
+		font-size:$fontSize24;
+		font-family: $LGSmHaSB;
+		text-align:center;
+		border-left:1px solid #ffffff;
+		height:42px;
+		&:first-child{border-left:0}
+	}
+	th .txt{
+		position: relative;
+		top:-20px;
+	}
+	td{
+		color:#4d4948;
+		font-size:$fontSize18;
+		font-family: $LGSmHaR;
+		text-align:center;
+		line-height:2.22222222;
+		border-left:1px solid #ffffff;
+		vertical-align: top;
+		&:first-child{border-left:0}
+	}
+	td.left{
+		text-align:left;
+		padding-left:40px;
+	}
+	td.middle{
+		vertical-align: middle;
+	}
+	tr:last-child td{
+		padding-bottom:27px;
+	}
+	.btn-download-dark{
+		display:inline-block;width:40px;height:40px;
+		// background:red;
+		vertical-align: middle;position: relative;
+		.ico{
+			position:absolute;top:50%;left:50%;margin:-9px 0 0 -9px;
+			@include sprite-custom($pc-ico-download-dark);
+		}
+	}
+	.btn-link01{
+		display:inline-block;vertical-align: middle;
+		.txt{
+			color:#4d4948;
+			font-size:$fontSize18;
+			font-family: $LGSmHaR;
+		}
+		.ico{
+			display:inline-block;vertical-align: middle;
+			@include sprite-custom($pc-ico-download-dark);
+		}
+	}
+}
+
+// col 타입 2
+.table-wrap-type02{
+	width:100%;max-width:1280px;
+	margin:0 auto;
+}
+.table-col-type02{
+	width:100%;table-layout:fixed;
+	thead{
+		border:1px solid #999290;
+	}
+	th{
+		color:#333130;
+		font-size:$fontSize18;
+		font-family: $LGSmHaSB;
+		text-align:center;
+		height:57px;
+	}
+	td{
+		color:#4d4948;
+		font-size:$fontSize18;
+		font-family: $LGSmHaR;
+		text-align:center;
+		line-height:3.1;
+		vertical-align: middle;
+		height:56px;
+		border-bottom:1px solid #cccccc;
+		.txt-link{
+			width:calc(100% - 10px);
+			display:block;
+			color:#4d4948;
+		}
+		@include txt-line-clamp(3.1, 1);
+	}
+	td.left{
+		text-align:left;
+	}
+	tr:first-child td{
+		padding-top:10px;
+		height:58px;
+	}
+	.btn-download-dark{
+		display:inline-block;width:40px;height:40px;
+		// background:red;
+		vertical-align: middle;position: relative;
+		.ico{
+			position:absolute;top:50%;left:50%;margin:-9px 0 0 -9px;
+			@include sprite-custom($pc-ico-download-dark);
+		}
+	}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype01-01{
+	.col01{width:160px;}
+	.col02{width:auto;}
+	.col03{width:240px;}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype01-02{
+	.col01{width:160px;}
+	.col02{width:auto;}
+	.col03{width:240px;}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype01-03{
+	.col01{width:160px;}
+	.col02{width:160px;}
+	.col03{width:auto;}
+	.col04{width:160px;}
+	.col05{width:240px;}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype01-04{
+	.col01{width:auto;}
+	.col02{width:auto;}
+	.col03{width:auto;}
+	.col04{width:auto;}
+	.col05{width:auto;}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype02-01{
+	.col01{width:110px;}
+	.col02{width:auto;}
+	.col03{width:140px;}
+}
+// 아래 colgroup 은 프로토타입용 샘플.
+// 실제 colgroup 은 카테고리 css 에서 관리하기
+.colgroup-prototype02-02{
+	.col01{width:110px;}
+	.col02{width:auto;}
+	.col03{width:140px;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*! table */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*! tab */
+
+
+
+
+
+
+// /*!
+// 	page navigation - 태블릿 기본 스타일
+// */
+// @media screen and (min-width:768px) and (max-width:1024px){
+//
+// }
+//
+// /*!
+// 	page navigation - 태블릿 가로모드 스타일
+// */
+// @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape){
+//
+// }
