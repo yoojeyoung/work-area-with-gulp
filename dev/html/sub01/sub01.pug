@@ -37,3 +37,19 @@ block contents
 
 		#content(role='main')
 			| 컨텐츠 시작
+			.c1
+			button#button1 버튼1
+			button#button2 버튼2
+
+append script
+	script.
+		$(document).ready(function(){
+			$('#button1').on("click", function(){
+				$('.c1').removeClass('off');
+				$('.c1').addClass('on');
+			});
+			$('#button2').on("click", function(){
+				$('.c1').removeClass('on')
+				$('.c1').addClass('off');
+			});
+		});
