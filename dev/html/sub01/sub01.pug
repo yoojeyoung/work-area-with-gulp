@@ -37,31 +37,35 @@ block contents
 
 		#content(role='main')
 			| 컨텐츠 시작
-			.c1
-			button#button1 버튼1
-			button#button2 버튼2
-
-			.welcome
-			.welcome
+			.test1
+				.c1
+				button#button1 버튼1
+				button#button2 버튼2
+			.test2
+				button#button3 버튼3
+				button#button4 버튼4
+				.welcome
+					span 자바스크립트 테스트
+				.welcome
+					span 자바스크립트 테스트
 
 append script
 	script.
 		$(document).ready(function(){
-			//- $('#button1').on("click", function(){
-			//- 	$('.c1').removeClass('off');
-			//- 	$('.c1').addClass('on');
-			//- });
-			//- $('#button2').on("click", function(){
-			//- 	$('.c1').removeClass('on')
-			//- 	$('.c1').addClass('off');
-			//- });
-
-			$('.welcome').html('hello world coding everybody!').css('background-color','yellow')
-
 			$('#button1').on("click", function(){
-				$('.welcome').css('display','none');
+				$('.c1').removeClass('off');
+				$('.c1').addClass('on');
 			});
 			$('#button2').on("click", function(){
+				$('.c1').removeClass('on')
+				$('.c1').addClass('off');
+			});
+
+
+			$('#button3').on("click", function(){
 				$('.welcome').css('display','block');
+			});
+			$('#button4').on("click", function(){
+				$('.welcome').css('display','none');
 			});
 		});

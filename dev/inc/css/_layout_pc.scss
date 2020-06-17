@@ -1,4 +1,24 @@
 @charset "utf-8";
+.test1{
+    .c1{
+        &.on{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            transform: translate(-50%,-50%);
+        }
+    }
+}
+.test2{
+  .welcome{
+    display: none;
+    background: yellow;
+    span{font-size: 40px;}
+  }
+}
 
 /*! header */
 /*! footer */
