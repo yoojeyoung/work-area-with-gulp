@@ -41,15 +41,27 @@ block contents
 			button#button1 버튼1
 			button#button2 버튼2
 
+			.welcome
+			.welcome
+
 append script
 	script.
 		$(document).ready(function(){
+			//- $('#button1').on("click", function(){
+			//- 	$('.c1').removeClass('off');
+			//- 	$('.c1').addClass('on');
+			//- });
+			//- $('#button2').on("click", function(){
+			//- 	$('.c1').removeClass('on')
+			//- 	$('.c1').addClass('off');
+			//- });
+
+			$('.welcome').html('hello world coding everybody!').css('background-color','yellow')
+
 			$('#button1').on("click", function(){
-				$('.c1').removeClass('off');
-				$('.c1').addClass('on');
+				$('.welcome').css('display','none');
 			});
 			$('#button2').on("click", function(){
-				$('.c1').removeClass('on')
-				$('.c1').addClass('off');
+				$('.welcome').css('display','block');
 			});
 		});
