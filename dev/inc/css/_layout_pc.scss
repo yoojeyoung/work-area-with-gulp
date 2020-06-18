@@ -1,4 +1,7 @@
 @charset "utf-8";
+p{
+  &.tit{margin: 15px 0 5px;font-size: 16px;font-weight: bold;}
+}
 .test1{
     .c1{
         &.on{
@@ -17,6 +20,13 @@
     display: none;
     background: yellow;
     span{font-size: 40px;}
+  }
+}
+.navi{
+  li{
+    display: inline-block;
+    padding: 5px;
+    &.selected{background: red;color: #ffffff;}
   }
 }
 

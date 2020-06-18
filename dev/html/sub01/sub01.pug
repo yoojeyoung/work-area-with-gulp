@@ -37,10 +37,13 @@ block contents
 
 		#content(role='main')
 			| 컨텐츠 시작
+			p.tit 버튼을 눌렀을 경우 (javascript: removeClass,addClass 사용)
 			.test1
 				.c1
 				button#button1 버튼1
 				button#button2 버튼2
+
+			p.tit 버튼을 눌렀을 경우 (javascript: css  none,block 활용)
 			.test2
 				button#button3 버튼3
 				button#button4 버튼4
@@ -48,6 +51,14 @@ block contents
 					span 자바스크립트 테스트
 				.welcome
 					span 자바스크립트 테스트
+			
+			p.tit 간단한 navi (javascript: removeClass,addClass 사용)
+			ul.navi
+				li javascript
+				li html
+				li css
+				li sass
+				li pug
 
 append script
 	script.
@@ -61,11 +72,15 @@ append script
 				$('.c1').addClass('off');
 			});
 
-
 			$('#button3').on("click", function(){
 				$('.welcome').css('display','block');
 			});
 			$('#button4').on("click", function(){
 				$('.welcome').css('display','none');
+			});
+
+			$('.navi li').on('click',function(){
+				$('.navi li').removeClass('selected');
+				$(this).addClass('selected');
 			});
 		});
