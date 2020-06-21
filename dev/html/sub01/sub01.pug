@@ -59,6 +59,57 @@ block contents
 				li css
 				li sass
 				li pug
+			
+			p.tit 선택자 (javascript: switch문 사용)
+			.wrap
+				.sample
+					ul#tutorials
+						li.tutorial#HTML HTML
+						li.tutorial#CSS CSS
+						li.tutorial#javascript javascript
+						li.tutorial#jquery jQuery
+						li.tutorial#PHP PHP
+						li.tutorial#MYSQL MYSQL
+					textarea
+						ul#tutorials
+							li.tutorial#HTML HTML
+							li.tutorial#CSS CSS
+							li.tutorial#javascript javascript
+							li.tutorial#jquery jQuery
+							li.tutorial#PHP PHP
+							li.tutorial#MYSQL MYSQL
+					.clear
+				<input class="btn" type="button" id="#jquerybtn" value="#jquery" /> - id 선택자 <br />
+				<input class="btn" type="button" id=".tutorial" value=".tutorial" /> - class 선택자 <br />
+				<input class="btn" type="button" value="li" /> - 엘리먼트 선택자 <br />
+				<input class="btn" type="button" value="#jquery, #MYSQL" /> 
+
+
+				.sample
+					ul#attribute
+						li(target="ABCD") ABCD
+						li(target="BCDE") BCDE
+						li(target="CDEF") CDEF
+						li(target="DEFG") DEFG
+						li(target="EFGH") EFGH
+						li(target="FGHI")#FGHI FGHI
+					textarea
+						ul#attribute
+							li(target="ABCD") ABCD
+							li(target="BCDE") BCDE
+							li(target="CDEF") CDEF
+							li(target="DEFG") DEFG
+							li(target="EFGH") EFGH
+							li(target="FGHI")#FGHI FGHI
+					.clear
+				<input class="btn" type="button" value="[target*=&quot;BC&quot;]" /> - 속성의 값에 주어진 문자열이 포함되는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target=&quot;DEFG&quot;]" /> - 속성의 값과 주어진 문자열이 일치하는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target!=&quot;DEFG&quot;]" /> - 속성의 값과 주어진 문자열이 일치하지 않는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target^=&quot;B&quot;]" /> - 속성의 값으로 주어진 문자열이 처음 등장하는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target$=&quot;H&quot;]" /> - 속성의 값으로 주어진 문자열이 마지막으로 등장하는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target]" /> - 속성이 존재하는 엘리먼트를 찾아내는 선택자 <br />
+				<input class="btn" type="button" value="[target][id]" /> - 속성들이 존재하는 엘리먼트를 찾아내는 선택자
+
 
 append script
 	script.
@@ -82,5 +133,58 @@ append script
 			$('.navi li').on('click',function(){
 				$('.navi li').removeClass('selected');
 				$(this).addClass('selected');
+			});
+
+
+			$('.wrap input').on('click', function() {
+				$this = $(this);
+				$('*').removeClass('selected');
+				switch($this.attr('value')) {
+						case '#jquery':
+								$('#jquery').addClass('selected');
+								break;
+						case '.tutorial':
+								$('.tutorial').addClass('selected');
+								break;
+						case 'li':
+								$('li').addClass('selected');
+								break;
+						case '#jquery, #MYSQL':
+								$('#jquery, #MYSQL').addClass('selected');    
+								break;
+						case '[target*="BC"]':
+								$('li[target*="BC"]').addClass('selected');
+								break;
+						case '[target="DEFG"]':
+								$('li[target="DEFG"]').addClass('selected');
+								break;
+						case '[target!="DEFG"]':
+								$('li[target!="DEFG"]').addClass('selected');
+								break;
+						case '[target^="B"]':
+								$('li[target^="B"]').addClass('selected');
+								break;
+						case '[target$="H"]':
+								$('li[target$="H"]').addClass('selected');
+								break;
+						case '[target]':
+								$('li[target]').addClass('selected');
+								break;
+						case '[target][id]':
+								$('li[target][id]').addClass('selected');
+								break;
+						case '[type="text"]':
+								$('[type="text"]').addClass('selected');                    
+								break;
+						case '[type="text"]:disabled':
+								$('[type="text"]:disabled').addClass('selected');
+								break;
+						case '[type="text"]:enabled':
+								$('[type="text"]:enabled').addClass('selected');
+								break;
+						case 'input:checked':
+								$('input:checked').parent().addClass('selected');;
+								break;   
+				}
 			});
 		});

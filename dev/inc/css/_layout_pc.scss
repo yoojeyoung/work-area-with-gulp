@@ -30,6 +30,40 @@ p{
   }
 }
 
+.wrap{
+  margin: 50px 0 50px;
+  .selected,.selected_parent {
+    background-color: red !important;
+    color:white;
+    border:2px solid red !important;
+  }
+  input.btn {
+    width:130px;
+  }
+  ul, .live{
+    float:left;
+    width:150px;
+    padding-left:20px;
+    margin:0;
+  }
+  textarea{
+    float:left;
+    width: 400px;
+    height:150px;
+    font-size:11px;
+    margin-left:20px;
+  }
+  .clear{
+    clear: both;
+  }
+  .sample{
+    margin-bottom: 20px;
+    &:not(:first-child){
+      margin-top: 30px;
+    }
+  }
+}
+
 /*! header */
 /*! footer */
 /*! popup */
