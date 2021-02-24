@@ -37,197 +37,51 @@ block contents
 
 		#content(role='main')
 			| 컨텐츠 시작
-			p.tit 버튼을 눌렀을 경우 (javascript: removeClass,addClass 사용)
-			.test1
-				.c1
-				button#button1 버튼1
-				button#button2 버튼2
-
-			p.tit 버튼을 눌렀을 경우 (javascript: css  none,block 활용)
-			.test2
-				button#button3 버튼3
-				button#button4 버튼4
-				.welcome
-					span 자바스크립트 테스트
-				.welcome
-					span 자바스크립트 테스트
 			
-			p.tit 간단한 navi (javascript: removeClass,addClass 사용)
-			ul.navi
-				li javascript
-				li html
-				li css
-				li sass
-				li pug
-			
-			p.tit 선택자 (javascript: switch문 사용)
-			.wrap
-				.sample
-					ul#tutorials
-						li.tutorial#HTML HTML
-						li.tutorial#CSS CSS
-						li.tutorial#javascript javascript
-						li.tutorial#jquery jQuery
-						li.tutorial#PHP PHP
-						li.tutorial#MYSQL MYSQL
-					textarea
-						ul#tutorials
-							li.tutorial#HTML HTML
-							li.tutorial#CSS CSS
-							li.tutorial#javascript javascript
-							li.tutorial#jquery jQuery
-							li.tutorial#PHP PHP
-							li.tutorial#MYSQL MYSQL
-					.clear
-				<input class="btn" type="button" id="#jquerybtn" value="#jquery" /> - id 선택자 <br />
-				<input class="btn" type="button" id=".tutorial" value=".tutorial" /> - class 선택자 <br />
-				<input class="btn" type="button" value="li" /> - 엘리먼트 선택자 <br />
-				<input class="btn" type="button" value="#jquery, #MYSQL" /> 
 
-
-			//- 	.sample
-			//- 		ul#attribute
-			//- 			li(target="ABCD") ABCD
-			//- 			li(target="BCDE") BCDE
-			//- 			li(target="CDEF") CDEF
-			//- 			li(target="DEFG") DEFG
-			//- 			li(target="EFGH") EFGH
-			//- 			li(target="FGHI")#FGHI FGHI
-			//- 		textarea
-			//- 			ul#attribute
-			//- 				li(target="ABCD") ABCD
-			//- 				li(target="BCDE") BCDE
-			//- 				li(target="CDEF") CDEF
-			//- 				li(target="DEFG") DEFG
-			//- 				li(target="EFGH") EFGH
-			//- 				li(target="FGHI")#FGHI FGHI
-			//- 		.clear
-			//- 	<input class="btn" type="button" value="[target*=&quot;BC&quot;]" /> - 속성의 값에 주어진 문자열이 포함되는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target=&quot;DEFG&quot;]" /> - 속성의 값과 주어진 문자열이 일치하는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target!=&quot;DEFG&quot;]" /> - 속성의 값과 주어진 문자열이 일치하지 않는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target^=&quot;B&quot;]" /> - 속성의 값으로 주어진 문자열이 처음 등장하는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target$=&quot;H&quot;]" /> - 속성의 값으로 주어진 문자열이 마지막으로 등장하는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target]" /> - 속성이 존재하는 엘리먼트를 찾아내는 선택자 <br />
-			//- 	<input class="btn" type="button" value="[target][id]" /> - 속성들이 존재하는 엘리먼트를 찾아내는 선택자
-			
-			//- p.tit 애니메이션 (javascript: switch문 사용)
-			//- .animation
-			//- 	input(type="button" id="fadeout" value="fade out")
-			//- 	input(type="button" id="fadein" value="fade in")
-			//- 	input(type="button" id="hide" value="hide")
-			//- 	input(type="button" id="show" value="show")
-			//- 	input(type="button" id="slidedown" value="slide down")
-			//- 	input(type="button" id="slideup" value="slide up")
-			//- 	input(type="button" id="mix" value="mix")
-			//- 	#target target
-
+			.tab-group#tab
+				.tab-wrap
+					ul.tab-list
+						li(role="tab")
+							a(href="#")  아우터
+						li(role="tab")
+							a(href="#") 상의
+						li(role="tab")
+							a(href="#") 하의
+						li(role="tab")
+							a(href="#") 신발
+						li(role="tab")
+							a(href="#") 가방
+				.tab-area.tab__contents
+					.tab-group 111111111
+					.tab-group 2222222222
+					.tab-group 333333333
+					.tab-group 444444444
+					.tab-group 55555555
 
 append script
 	script.
-		$(document).ready(function(){
-			$('#button1').on("click", function(){
-				$('.c1').removeClass('off');
-				$('.c1').addClass('on');
-			});
-			$('#button2').on("click", function(){
-				$('.c1').removeClass('on')
-				$('.c1').addClass('off');
-			});
+		let tabWrap = $('.tab-list');
+		let tabList = tabWrap.find('li');
+		let idx = 1;
+		let tabContent = $('.tab-group').find('.tab__contents > div');
+		let btn = tabList.find('a');
 
-			$('#button3').on("click", function(){
-				$('.welcome').css('display','block');
-			});
-			$('#button4').on("click", function(){
-				$('.welcome').css('display','none');
-			});
+		tabList.eq(idx - 1).addClass('on').attr('aria-selected', 'true');
+		tabContent.hide();
+		tabContent.eq(idx - 1).show();
 
-			$('.navi li').on('click',function(){
-				$('.navi li').removeClass('selected');
-				$(this).addClass('selected');
-			});
+		for(let i = 0; i<tabList.length; i++){
+			let listId = $('.tab-group').attr('id');
+			tabList.eq(i).attr({'aria-index' : `${listId}${i}`, 'id' : `tab${listId}${i}`});
+			tabContent.eq(i).attr('aria-label' , `tab${listId}${i}`);
+		}
 
-
-			$('.wrap input').on('click', function() {
-				$this = $(this);
-				$('*').removeClass('selected');
-				switch($this.attr('value')) {
-						case '#jquery':
-								$('#jquery').addClass('selected');
-								break;
-						case '.tutorial':
-								$('.tutorial').addClass('selected');
-								break;
-						case 'li':
-								$('li').addClass('selected');
-								break;
-						case '#jquery, #MYSQL':
-								$('#jquery, #MYSQL').addClass('selected');    
-								break;
-						case '[target*="BC"]':
-								$('li[target*="BC"]').addClass('selected');
-								break;
-						case '[target="DEFG"]':
-								$('li[target="DEFG"]').addClass('selected');
-								break;
-						case '[target!="DEFG"]':
-								$('li[target!="DEFG"]').addClass('selected');
-								break;
-						case '[target^="B"]':
-								$('li[target^="B"]').addClass('selected');
-								break;
-						case '[target$="H"]':
-								$('li[target$="H"]').addClass('selected');
-								break;
-						case '[target]':
-								$('li[target]').addClass('selected');
-								break;
-						case '[target][id]':
-								$('li[target][id]').addClass('selected');
-								break;
-						case '[type="text"]':
-								$('[type="text"]').addClass('selected');                    
-								break;
-						case '[type="text"]:disabled':
-								$('[type="text"]:disabled').addClass('selected');
-								break;
-						case '[type="text"]:enabled':
-								$('[type="text"]:enabled').addClass('selected');
-								break;
-						case 'input:checked':
-								$('input:checked').parent().addClass('selected');;
-								break;   
-				}
-			});
-			$('.animation input').on('click', function(e){
-				var $this = $(e.target);
-				switch($this.attr('id')){
-					case 'fadeout':
-					$('#target').fadeOut('slow');
-					break;
-
-					case 'fadein':
-					$('#target').fadeIn('slow');
-					break;
-
-					case 'hide':
-					$('#target').hide();
-					break;
-
-					case 'show':
-					$('#target').show();
-					break;
-
-					case 'slidedown':
-					$('#target').hide().slideDown('slow');
-					break;
-
-					case 'slideup':
-					$('#target').show().slideUp('slow');
-					break;
-
-					case 'mix':
-					$('#target').fadeOut('slow').fadeIn('slow').delay(1000).slideUp().slideDown('slow', function(){alert('end')});
-					break;
-				}
-			})
-		});
+		btn.on('click', function(){
+			let index = tabList.index();
+			let thisIndex = $(this).parent().index();
+			tabList.removeClass('on').attr('aria-selected','false');
+			$(this).parent().addClass('on').attr('aria-selected','true');
+			tabContent.hide();
+			tabContent.eq(thisIndex).show();
+		})
